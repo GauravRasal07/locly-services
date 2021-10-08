@@ -1,0 +1,68 @@
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@500;700&family=Poppins:wght@500&display=swap");
+
+* {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  overflow-x: hidden;
+  font-family: "Poppins", sans-serif;
+}
+
+.home {
+  background: #66bb6a;
+}
+
+.row .col-md-6 {
+  padding-left: 0 !important;
+  padding-right: 0 !important;
+  margin: 0 !important;
+}
+
+.landing-content {
+  font-family: "Montserrat", sans-serif;
+  padding-left: 10%;
+  padding-top: 30%;
+}
+
+.landing-content h1 {
+  font-size: 72px;
+  font-weight: 700;
+  color: #363636;
+}
+
+.landing-content hr {
+  height: 3px;
+}
+
+.landing-content p {
+  color: #dddddd;
+  font-size: 28px;
+  font-weight: 500;
+}
+
+.service-img {
+  /* background: #ff7043; */
+  background: url("../images/services-collage.png") no-repeat center;
+  background-size: cover;
+  /* background-attachment: fixed; */
+  background-blend-mode: darken;
+  height: 100vh;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+  border-radius: 50% 0 0 0/100% 0 0 0;
+}
+
+/* .service-img::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  right: 0;
+  height: 100%;
+  background: #ff7043;
+  /* border-radius: 0 0 0 50%/0 0 0 100%; */
+/* } */
