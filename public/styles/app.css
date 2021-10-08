@@ -8,6 +8,7 @@
 body {
   overflow-x: hidden;
   font-family: "Poppins", sans-serif;
+<<<<<<< HEAD
 }
 
 :root{
@@ -26,6 +27,8 @@ body {
 }
 
 .home {
+=======
+>>>>>>> 8ed514f4bcc0640fbdeb19454b40bb6f478a16de
   background: #66bb6a;
 }
 
@@ -37,8 +40,9 @@ body {
 
 .landing-content {
   font-family: "Montserrat", sans-serif;
-  padding-left: 10%;
-  padding-top: 30%;
+  padding-left: 20%;
+  padding-right: 20%;
+  padding-top: 35%;
 }
 
 .landing-content h1 {
