@@ -10,6 +10,21 @@ body {
   font-family: "Poppins", sans-serif;
 }
 
+:root{
+    --yellow:  #ffca28;
+    --text-dark: #363636;
+    --text-light: #ddd;
+    --text-gray: #767676;
+    --light-green: #66bb6a;
+    --red-orange: #ff7043;
+    --blue-info: #42a5f5;
+}
+
+/* Utilities */
+.cus-bg-dark{
+  background-color: var(--text-dark);
+}
+
 .home {
   background: #66bb6a;
 }
@@ -66,3 +81,76 @@ body {
   background: #ff7043;
   /* border-radius: 0 0 0 50%/0 0 0 100%; */
 /* } */
+
+
+/* Services Page Styles */
+.logo-container{
+  border-bottom:1px solid #767676;
+}
+
+.logo{
+  color: var(--blue-info);
+}
+
+.dropdown-menu{
+  background-color: var(--text-dark);
+}
+
+.dropdown-item{
+  color: var(--text-light);
+}
+
+.service_title{
+  color: var(--text-dark);
+  position: relative;
+}
+
+.service_title::after{
+  content: '';
+  position: absolute;
+  height: 4px;
+  width: 60%;
+  background-color: var(--yellow);
+  left:20%;
+  bottom: -15px;
+  border-radius: 2px;
+}
+
+.p_card{
+  border: 1px solid rgba(0,0,0,.125);
+  border-radius: 10px;
+}
+
+.p_card_top{
+  display: flex;
+  border-bottom: 1px solid rgba(0,0,0,.125);
+}
+
+.provider_pic_container{
+  display: inline-block;
+}
+
+.provider_pic{
+  height: 80px;
+  width: 80px;
+  border-radius: 50%;
+}
+
+.provider_info{
+  display: flex;
+  justify-content: center;
+  flex-direction: column  ;
+}
+
+.appointment_btn{
+  border-radius: 5px;
+  text-decoration: none;
+  padding: 4px;
+  color: var(--blue-info) !important;
+  border: 1px solid var(--blue-info);
+}
+
+.appointment_btn:hover{
+  background-color: var(--blue-info);
+  color: #fff !important;
+}
