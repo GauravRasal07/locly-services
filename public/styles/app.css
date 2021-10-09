@@ -27,6 +27,15 @@ body {
   background: var(--light-green);
 }
 
+.alert {
+    display: flex;
+    justify-content: space-between;
+}
+
+.alert a {
+  font-size: 20px;
+}
+
 a {
   text-decoration: none;
   color: inherit;
@@ -108,7 +117,7 @@ a {
   font-size: 1.5rem;
   font-weight: 700;
   letter-spacing: 1px;
-  border: 2px solid var(--text-light);
+  /* border: 2px solid var(--text-light); */
 }
 
 .navbar-brand:hover {
@@ -185,4 +194,65 @@ a {
 .appointment_btn:hover {
   background-color: var(--blue-info);
   color: #fff !important;
+}
+
+.form-row {
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#myTab {
+  justify-content: center;
+}
+
+.nav-tabs .nav-link {
+  border-radius: 0.25rem;
+}
+
+.nav-tabs .nav-item.show .nav-link, .nav-tabs .nav-link.active {
+  background: var(--red-orange);
+  border-color: var(--red-orange);
+}
+
+.form-row form {
+  margin-top: 2rem;
+}
+
+.form-tabs div {
+  /* background: var(--light-green); */
+  width: 80%;
+  margin-left: 10%;
+  font-size: 1.2rem;
+}
+
+.cons-tab, .pro-tab {
+  padding: 0.5rem;
+  border-radius: 3px;
+}
+
+.cons-tab {
+  background: var(--light-green);
+}
+
+.pro-tab {
+  background: var(--red-orange);
+}
+ 
+.form-row .p_card {
+  padding: 2rem;
+}
+
+.form-control, .form-control:focus, .form-select, .form-select:focus {
+  background: transparent;
+  border: none;
+  border-radius: 0;
+  border-bottom: 2px solid var(--text-gray);
+  margin-top: 1rem;
+  box-shadow: none;
+}
+
+.form-row .btn {
+  float: right;
 }

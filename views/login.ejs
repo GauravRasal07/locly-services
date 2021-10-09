@@ -1,0 +1,43 @@
+<%- include("partials/header") %>
+
+<main>
+  <div class="row form-row">
+    <div class="col-md-3 p_card">
+      <form action="/login" method="post">
+        <div class="text-center">
+          <h3>Login</h3>
+          <p>Don't have an account? <a href="/register" style="color: #42a5f5;"> register</a></p>
+        </div>
+        <div class="form-group mt-3">
+          <!-- <label for="exampleInputEmail1">Email address</label> -->
+          <input
+            type="email"
+            class="form-control"
+            id="exampleInputEmail1"
+            aria-describedby="emailHelp"
+            placeholder="Email address"
+            name="username"
+            required
+          />
+          <!-- <small id="emailHelp" class="form-text text-muted"
+            >We'll never share your email with anyone else.</small
+          > -->
+        </div>
+        <div class="form-group mt-4">
+          <!-- <label for="exampleInputPassword1">Password</label> -->
+          <input
+            type="password"
+            class="form-control"
+            id="exampleInputPassword1"
+            placeholder="Password"
+            name="password"
+            required
+          />
+        </div>
+        <button type="submit" class="btn btn-warning mt-3">Login</button>
+      </form>
+    </div>
+  </div>
+</main>
+
+<%- include("partials/footer") %>

@@ -53,14 +53,16 @@ passport.deserializeUser(User.deserializeUser());
 
 app.use(function (req, res, next) {
   res.locals.currentUser = req.user;
+  res.locals.error = req.flash("error");
+  res.locals.success = req.flash("success");
+  res.locals.warning = req.flash("warning");
   next();
 });
 
 app.use(require("./routes/user.js"));
 
-
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, function () {
   console.log("The Server is Listening!!!");
-  console.log(`Visit here: http://localhost:${PORT}`)
+  console.log(`Visit here: http://localhost:${PORT}`);
 });
