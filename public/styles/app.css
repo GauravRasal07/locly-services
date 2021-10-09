@@ -1,5 +1,15 @@
 @import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@500;700&family=Poppins:wght@500&display=swap");
 
+:root {
+  --yellow: #ffca28;
+  --text-dark: #363636;
+  --text-light: #ddd;
+  --text-gray: #767676;
+  --light-green: #66bb6a;
+  --red-orange: #ff7043;
+  --blue-info: #42a5f5;
+}
+
 * {
   margin: 0;
   padding: 0;
@@ -14,25 +24,17 @@
 body {
   overflow-x: hidden;
   font-family: "Poppins", sans-serif;
+  background: var(--light-green);
 }
 
-:root {
-  --yellow: #ffca28;
-  --text-dark: #363636;
-  --text-light: #ddd;
-  --text-gray: #767676;
-  --light-green: #66bb6a;
-  --red-orange: #ff7043;
-  --blue-info: #42a5f5;
+a {
+  text-decoration: none;
+  color: inherit;
 }
 
 /* Utilities */
 .cus-bg-dark {
   background-color: var(--red-orange);
-}
-
-.home {
-  background: #66bb6a;
 }
 
 .row .col-md-6 {
@@ -45,7 +47,7 @@ body {
   font-family: "Montserrat", sans-serif;
   padding-left: 20%;
   padding-right: 20%;
-  padding-top: 35%;
+  padding-top: 30%;
 }
 
 .landing-content h1 {
@@ -92,18 +94,25 @@ body {
 /* } */
 
 /* Services Page Styles */
-.service-page {
-  background: var(--light-green);
+.navbar .container-fluid {
+  display: flex;
+  align-items: center;
 }
 
 .logo-container {
   border-bottom: 1px solid #767676;
 }
 
-.logo {
-  color: var(--text-dark);
+.navbar-brand {
+  color: var(--text-dark) !important;
+  font-size: 1.5rem;
   font-weight: 700;
   letter-spacing: 1px;
+  border: 2px solid var(--text-light);
+}
+
+.navbar-brand:hover {
+  background-color: #ffca28 !important;
 }
 
 .dropdown-menu {
@@ -114,8 +123,8 @@ body {
   color: var(--text-light);
 }
 
-.service_title_div {
-  margin-top: 5rem;
+.services-main {
+  margin-top: 6rem;
 }
 
 .service_title {
@@ -128,9 +137,9 @@ body {
   content: "";
   position: absolute;
   height: 4px;
-  width: 60%;
+  width: 80%;
   background-color: var(--red-orange);
-  left: 20%;
+  left: 10%;
   bottom: -15px;
   border-radius: 2px;
 }
