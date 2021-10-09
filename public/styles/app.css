@@ -5,6 +5,11 @@
   padding: 0;
 }
 
+*::selection {
+  background: rgb(255, 112, 67);
+  color: #363636;
+}
+
 body {
   overflow-x: hidden;
   font-family: "Poppins", sans-serif;
@@ -31,7 +36,9 @@ body {
 }
 
 .landing-content hr {
-  height: 3px;
+  height: 5px;
+  background-color: #767676;
+  color: #767676;
 }
 
 .landing-content p {

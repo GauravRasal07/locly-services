@@ -32,7 +32,11 @@ router.post("/register/consumer", (req, res) => {
         //   req.flash("success", "Successfully registered as consumer!");
         //   res.render("home");
         // });
-        res.send("Successfully Registered!!");
+        req.flash(
+          "success",
+          "Successfully registered, Login with your credentials!"
+        );
+        res.redirect("/login");
       }
     });
   } else {
@@ -69,13 +73,11 @@ router.post("/register/provider", (req, res) => {
           } else {
             user.providerId = provider;
             user.save();
-            passport.authenticate("local")(req, res, () => {
-              req.flash(
-                "success",
-                "Successfully registered as Service Provider!"
-              );
-              res.render("home");
-            });
+            req.flash(
+              "success",
+              "Successfully registered, Login with your credentials!"
+            );
+            res.redirect("/login");
           }
         });
       }
@@ -94,7 +96,7 @@ router.get("/login", (req, res) => {
 router.post(
   "/login",
   passport.authenticate("local", {
-    successRedirect: "/home",
+    successRedirect: "/services",
     failureRedirect: "/login",
     failureFlash: true,
   }),
@@ -103,7 +105,7 @@ router.post(
 
 //----------------Logout route--------------------
 router.get("/logout", (req, res) => {
-  req.flash("success", "Logged out!");
+  // req.flash("success", "Logged out!");
   req.logout();
   res.redirect("/");
 });
@@ -120,6 +122,13 @@ router.delete("/user/:id", (req, res) => {
   });
 });
 
-//------------------
+//------------------service routes-----------------------
+router.get("/services", (req, res) => {
+  if (req.user.serviceProvider) {
+    res.render("provider-dashboard");
+  } else {
+    res.render("services");
+  }
+});
 
 module.exports = router;
