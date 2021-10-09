@@ -4,9 +4,17 @@ const User = require("../models/user");
 const Provider = require("../models/serviceprovider");
 const passport = require("passport");
 
+
+//-----------Landing Page--------------
 router.get("/", (req, res) => {
   res.render("landing-page");
 });
+
+//-----------Services --------------
+router.get('/services',(req,res)=>{
+  res.render("services");
+})
+
 
 //-----------Register Route--------------
 router.get("/register", (req, res) => {

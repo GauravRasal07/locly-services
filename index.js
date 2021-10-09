@@ -58,6 +58,9 @@ app.use(function (req, res, next) {
 
 app.use(require("./routes/user.js"));
 
-app.listen(process.env.PORT || 3000, function () {
+
+const PORT = process.env.PORT || 3000;
+app.listen(PORT, function () {
   console.log("The Server is Listening!!!");
+  console.log(`Visit here: http://localhost:${PORT}`)
 });
