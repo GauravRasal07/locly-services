@@ -21,22 +21,41 @@
   </head>
   <body>
     <% if(error && error.length > 0){ %>
-        <div class="alert alert-danger alert-dismissible" style="margin-bottom: 0px;">
-          <strong><%= error %></strong>
-          <a href="/home" class="close" data-dismiss="alert" aria-label="close">&times;</a>
-        </div>
+    <div class="alert alert-warning alert-dismissible fade show" role="alert">
+      <strong><%= error %></strong>
+      <button
+        type="button"
+        class="close"
+        data-bs-dismiss="alert"
+        aria-label="Close"
+      >
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+    <% } %> <% if(success && success.length > 0){ %>
+    <div class="alert alert-warning alert-dismissible fade show" role="alert">
+      <strong><%= success %></strong>
+      <button
+        type="button"
+        class="close"
+        data-bs-dismiss="alert"
+        aria-label="Close"
+      >
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+    <% } %> <% if(warning && warning.length > 0){ %>
+    <div class="alert alert-warning alert-dismissible fade show" role="alert">
+      <strong><%= warning %></strong>
+      <button
+        type="button"
+        class="close"
+        data-bs-dismiss="alert"
+        aria-label="Close"
+      >
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
     <% } %>
-
-    <% if(success && success.length > 0){ %>
-        <div class="alert alert-success alert-dismissible" style="margin-bottom: 0px;">
-          <strong><%= success %></strong>
-          <a href="/home" class="close" data-dismiss="alert" aria-label="close">&times;</a>
-        </div>
-    <% } %>
-
-    <% if(warning && warning.length > 0){ %>
-        <div class="alert alert-warning alert-dismissible" style="margin-bottom: 0px;">
-          <strong><%= warning %></strong>
-          <a href="/home" class="close" data-dismiss="alert" aria-label="close">&times;</a>
-        </div>
-    <% } %>
+  </body>
+</html>

@@ -3,7 +3,7 @@
 <main>
     
       <div class="row form-row">
-    <div class="col-md-3 p_card">
+    <div class="col-md-4 p_card">
     <ul class="nav nav-tabs" id="myTab" role="tablist">
       <li class="nav-item" role="presentation">
         <button
@@ -35,7 +35,7 @@
       </li>
     </ul>
     <div class="text-center mt-4">
-          <p>Allready registered? <a href="/login" style="color: #42a5f5;"> login</a></p>
+          <p>Already registered? <a href="/login" style="color: #42a5f5;"> login</a></p>
         </div>
     <div class="tab-content" id="myTabContent">
       <div
@@ -70,27 +70,33 @@
             >We'll never share your email with anyone else.</small
           > -->
         </div>
-        <div class="form-group">
-          <!-- <label for="exampleInputname">First Name</label> -->
-          <input
-            type="text"
-            class="form-control"
-            id="exampleInputname"
-            aria-describedby="emailHelp"
-            placeholder="First Name"
-            name="user[firstName]"
-          />
-        </div>
-        <div class="form-group">
-          <!-- <label for="exampleInputlname">Last Name</label> -->
-          <input
-            type="text"
-            class="form-control"
-            id="exampleInputlname"
-            aria-describedby="emailHelp"
-            placeholder="Last Name"
-            name="user[lastName]"
-          />
+        <div class="row">
+            <div class="col-md-6">
+                <div class="form-group px-2">
+            <!-- <label for="exampleInputname">First Name</label> -->
+                <input
+                    type="text"
+                    class="form-control"
+                    id="exampleInputname"
+                    aria-describedby="emailHelp"
+                    placeholder="First Name"
+                    name="user[firstName]"
+                />
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="form-group px-2">
+                <!-- <label for="exampleInputlname">Last Name</label> -->
+                <input
+                    type="text"
+                    class="form-control"
+                    id="exampleInputlname"
+                    aria-describedby="emailHelp"
+                    placeholder="Last Name"
+                    name="user[lastName]"
+                />
+                </div>
+            </div>
         </div>
         <div class="form-group">
           <!-- <label for="exampleInputnumber">Contact Number</label> -->
@@ -161,62 +167,88 @@
             >We'll never share your email with anyone else.</small
           > -->
         </div>
-        <div class="form-group">
-          <!-- <label for="exampleInputname">First Name</label> -->
-          <input
-            type="text"
-            class="form-control"
-            id="exampleInputname"
-            aria-describedby="emailHelp"
-            placeholder="First Name"
-            name="user[firstName]"
-          />
-        </div>
-        <div class="form-group">
-          <!-- <label for="exampleInputlname">Last Name</label> -->
-          <input
-            type="text"
-            class="form-control"
-            id="exampleInputlname"
-            aria-describedby="emailHelp"
-            placeholder="Last Name"
-            name="user[lastName]"
-          />
+        <div class="row">
+            <div class="col-md-6">
+                <div class="form-group px-2">
+            <!-- <label for="exampleInputname">First Name</label> -->
+                <input
+                    type="text"
+                    class="form-control"
+                    id="exampleInputname"
+                    aria-describedby="emailHelp"
+                    placeholder="First Name"
+                    name="user[firstName]"
+                />
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="form-group px-2">
+                <!-- <label for="exampleInputlname">Last Name</label> -->
+                <input
+                    type="text"
+                    class="form-control"
+                    id="exampleInputlname"
+                    aria-describedby="emailHelp"
+                    placeholder="Last Name"
+                    name="user[lastName]"
+                />
+                </div>
+            </div>
         </div>
         <div class="form-group">
           <!-- <label for="exampleInputnumber">Contact Number</label> -->
-          <input
-            type="tel"
-            class="form-control"
-            id="exampleInputnumber"
-            aria-describedby="emailHelp"
-            placeholder="Contact Number"
-            name="user[contactNumber]"
-            required
-          />
+            <input
+                type="tel"
+                class="form-control"
+                id="exampleInputnumber"
+                aria-describedby="emailHelp"
+                placeholder="Contact Number"
+                name="user[contactNumber]"
+                required
+            />
+        </div>
+        <div class="row">
+            <div class="col-md-6">
+                <div class="form-group px-2">
+                <select name="service[serviceType]" class="form-select" aria-label="Default select example">
+                    <option selected>Service Type</option>
+                    <option value="Electrician">Electrician</option>
+                    <option value="Plumber">Plumber</option>
+                    <option value="Mechanic">Mechanic</option>
+                    <option value="Gardener">Gardener</option>
+                    <option value="Cook">Cook</option>
+                </select>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="form-group">
+                    <!-- <label for="exampleInputPassword1">Password</label> -->
+                    <input
+                        type="number" 
+                        min="0.00" 
+                        step="10.00"
+                        class="form-control"
+                        id="exampleInputPassword1"
+                        placeholder="Basic Charges"
+                        name="service[basicCharges]"
+                        required
+                    />
+                </div>
+            </div>
         </div>
         <div class="form-group">
-          <select class="form-select" aria-label="Default select example">
-            <option selected>Service Type</option>
-            <option value="Electrician">Electrician</option>
-            <option value="Plumber">Plumber</option>
-            <option value="Mechanic">Mechanic</option>
-            <option value="Gardener">Gardener</option>
-            <option value="Cook">Cook</option>
-          </select>
+            <!-- <label for="exampleInputPassword1">Password</label> -->
+            <input
+                type="text" 
+                class="form-control"
+                id="exampleInputPassword1"
+                placeholder="Address(City & State)"
+                name="service[area]"
+                required
+            />
         </div>
         <div class="form-group">
-          <!-- <label for="exampleInputPassword1">Password</label> -->
-          <input
-            type="number" 
-            min="0.00" 
-            step="10.00"
-            class="form-control"
-            id="exampleInputPassword1"
-            placeholder="Basic Charges"
-            name="basicCharges"
-            required
-          />
+            <textarea name="service[description]" class="form-control" rows="3" placeholder="Describe your service in short"></textarea>
         </div>
         <div class="form-group">
           <!-- <label for="exampleInputPassword1">Password</label> -->

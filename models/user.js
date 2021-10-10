@@ -14,7 +14,7 @@ var userSchema = new mongoose.Schema({
   serviceProvider: { type: Boolean, default: false },
   providerId: {
       type: mongoose.Schema.Types.ObjectId,
-      ref: "Serviceprovider"
+      ref: "Service"
   },
   password: String,
   resetPasswordToken: String,
