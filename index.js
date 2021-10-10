@@ -14,7 +14,7 @@ const mongoose = require("mongoose");
 
 mongoose
   .connect(
-    "mongodb+srv://LoclyUser:locly@123@loclycluster.w92an.mongodb.net/myFirstDatabase?retryWrites=true&w=majority",
+    process.env.DBURI,
     {
       useNewUrlParser: true,
       useUnifiedTopology: true,

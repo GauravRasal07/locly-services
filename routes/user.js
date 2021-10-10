@@ -1,13 +1,17 @@
 const express = require("express");
 const router = express.Router();
 const User = require("../models/user");
-const Service = require("../models/service");
-const middleware = require("../middleware/index");
+const Provider = require("../models/serviceprovider");
 const passport = require("passport");
 
 //-----------Landing Page--------------
 router.get("/", (req, res) => {
   res.render("landing-page");
+});
+
+//-----------Services --------------
+router.get("/services", (req, res) => {
+  res.render("services");
 });
 
 //-----------Register Route--------------
@@ -16,10 +20,15 @@ router.get("/register", (req, res) => {
 });
 
 router.post("/register/consumer", (req, res) => {
-  // let data = req.sanitize(req.body);
   let data = req.body;
   if (data.password === data.confirm_pass) {
-    let newUser = new User(data.user);
+    let newUser = new User({
+      username: data.username,
+      email: data.email,
+      firstName: data.firstName,
+      lastName: data.lastName,
+      contactNumber: data.contactNumber,
+    });
     User.register(newUser, data.password, (err, user) => {
       if (err) {
         req.flash("error", "Something went wrong, Try again later!");
@@ -45,26 +54,31 @@ router.post("/register/consumer", (req, res) => {
 router.post("/register/provider", (req, res) => {
   let data = req.body;
   if (data.password === data.confirm_pass) {
-    let newUser = new User(data.user);
-    User.register(newUser, data.password, (err, user) => {
+    let newUser = new User({
+      username: data.username,
+      email: data.email,
+      firstName: data.firstName,
+      lastName: data.lastName,
+      contactNumber: data.contactNumber,
+      serviceProvider: true,
+    });
+    User.register(newUser, body.password, (err, user) => {
       if (err) {
         req.flash("error", "Something went wrong, Try again later!");
-        console.log(err);
         res.redirect("back");
       } else {
-        let provider = data.service;
-        // console.log(provider);
-        Service.create(provider, (err, service) => {
+        let provider = {
+          serviceType: data.serviceType,
+          area: data.area,
+          basicCharges: data.basicCharges,
+        };
+        Provider.create(provider, (err, provider) => {
           if (err) {
             req.flash("error", "Something went wrong, Try again later!");
-            console.log(err);
             res.redirect("back");
           } else {
-            user.providerId = service;
-            user.serviceProvider = true;
+            user.providerId = provider;
             user.save();
-            service.provider = user.firstName + " " + user.lastName;
-            service.save();
             req.flash(
               "success",
               "Successfully registered, Login with your credentials!"
@@ -115,19 +129,15 @@ router.delete("/user/:id", (req, res) => {
 });
 
 //------------------service routes-----------------------
-router.get("/services", middleware.isLoggedIn, async (req, res) => {
+router.get("/services", (req, res) => {
   if (req.user.serviceProvider) {
-    res.send("Here Provider Dashboard should appear!!!");
+    res.render("provider-dashboard");
   } else {
-    Service.find({}, (err, services) => {
-      res.render('services', {services: services});
-    })
+    res.render("services");
   }
-  // console.log("Heyyy, Middleware is not working");
-  // res.render("services");
 });
 
-router.get("/dashboard", middleware.isLoggedIn, (req, res) => {
+router.get("/dashboard", (req, res) => {
   res.render("provider-dashboard");
 });
 

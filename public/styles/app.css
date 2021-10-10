@@ -2,8 +2,7 @@
 
 :root {
   --yellow: #ffca28;
-  --text-dark: #474747;
-  --text-dark-o: #363636da;
+  --text-dark: #363636;
   --text-light: #ddd;
   --text-gray: #767676;
   --light-green: #66bb6a;
@@ -26,17 +25,14 @@ body {
   overflow-x: hidden;
   font-family: "Poppins", sans-serif;
   background: var(--light-green);
-  min-height: 100vh;
 }
 
 .alert {
-  display: flex;
-  justify-content: space-between;
+    display: flex;
+    justify-content: space-between;
 }
 
-.alert .close {
-  background: transparent;
-  border: none;
+.alert a {
   font-size: 20px;
 }
 
@@ -112,10 +108,6 @@ a {
   align-items: center;
 }
 
-.navbar-collapse {
-  justify-content: flex-end;
-}
-
 .logo-container {
   border-bottom: 1px solid #767676;
 }
@@ -123,24 +115,13 @@ a {
 .navbar-brand {
   color: var(--text-dark) !important;
   font-size: 1.5rem;
-  font-weight: bold;
+  font-weight: 700;
   letter-spacing: 1px;
-  font-family: "Montserrat", sans-serif;
+  /* border: 2px solid var(--text-light); */
 }
 
 .navbar-brand:hover {
   background-color: #ffca28 !important;
-}
-
-.nav-link {
-  color: var(--text-dark-o) !important;
-  margin-left: 0.3rem;
-  margin-right: 0.3rem;
-  font-weight: bold;
-}
-
-.nav-link:hover, .nav-link.active {
-  color: #000 !important;
 }
 
 .dropdown-menu {
@@ -216,14 +197,10 @@ a {
 }
 
 .form-row {
-  min-height: 100vh;
+  height: 100vh;
   display: flex;
   justify-content: center;
   align-items: center;
-}
-
-.login-page .form-row {
-  min-height: 80vh;
 }
 
 #myTab {
@@ -234,8 +211,7 @@ a {
   border-radius: 0.25rem;
 }
 
-.nav-tabs .nav-item.show .nav-link,
-.nav-tabs .nav-link.active {
+.nav-tabs .nav-item.show .nav-link, .nav-tabs .nav-link.active {
   background: var(--red-orange);
   border-color: var(--red-orange);
 }
@@ -251,8 +227,7 @@ a {
   font-size: 1.2rem;
 }
 
-.cons-tab,
-.pro-tab {
+.cons-tab, .pro-tab {
   padding: 0.5rem;
   border-radius: 3px;
 }
@@ -264,20 +239,15 @@ a {
 .pro-tab {
   background: var(--red-orange);
 }
-
+ 
 .form-row .p_card {
   padding: 2rem;
 }
 
-.form-control,
-.form-control:focus,
-.form-select,
-.form-select:focus,
-textarea,
-textarea:focus-visible {
+.form-control, .form-control:focus, .form-select, .form-select:focus {
   background: transparent;
-  border-radius: 0;
   border: none;
+  border-radius: 0;
   border-bottom: 2px solid var(--text-gray);
   margin-top: 1rem;
   box-shadow: none;
