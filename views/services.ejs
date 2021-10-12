@@ -1,6 +1,8 @@
 <%- include("partials/header") %>
 
 <main class="service-page">
+
+  <!-- Navbar -->
   <nav class="navbar navbar-expand-md navbar-dark fixed-top cus-bg-dark p-1">
     <div class="container-fluid px-2 py-2">
       <a class="navbar-brand d-block px-3" href="/">LOCLY</a>
@@ -68,6 +70,8 @@
     </div>
   </nav>
 
+
+  <!-- All services -->
   <div class="services-main">
     <!-- Service Title -->
     <!-- <div class="container p-4 service_title_div text-center">
@@ -110,14 +114,61 @@
               </div>
             </div>
             <div class="p-2">
-              <a href="#" class="appointment_btn">Book Appointment</a>
+              <button type="button" class="btn btn-primary appointment_btn" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                Book Appointment
+              </button>
             </div>
           </div>
         </div>
         <% }) %>
       </div>
+
     </div>
   </div>
+  
+
+  <!-- Modal for appointment booking-->
+  <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Book your Appointment</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <form class="book-appintment-form">
+            <div class="mb-3">
+              <label for="booking_name" class="form-label">Name: </label>
+              <input type="text" class="form-control" id="booking_name">
+            </div>
+            <div class="mb-3">
+              <label for="booking_phone" class="form-label">Mobile: </label>
+              <input type="number" class="form-control" id="booking_phone">
+            </div>
+            <div class="form-group">
+              <label for="service_address" class="form-label">Enter Address: </label>
+                <textarea name="address[serviceAddress]" 
+                          class="form-control" rows="3" 
+                          id="service_address"
+                          value=""
+                >
+                </textarea>
+            </div>
+            <div class="mb-3 mt-2">
+              <label for="appointment_date" class="form-label">Select Appointment Date:</label>
+              <input type="date" class="form-control w-50" id="appointment_date">
+            </div>
+            <div>
+              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+              <button type="submit" class="btn btn-primary">Book Now</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  
 </main>
 
 <%- include("partials/footer") %>

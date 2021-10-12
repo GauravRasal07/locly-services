@@ -120,7 +120,7 @@ router.get("/services", middleware.isLoggedIn, async (req, res) => {
     res.send("Here Provider Dashboard should appear!!!");
   } else {
     Service.find({}, (err, services) => {
-      res.render('services', {services: services});
+      res.render('services', {services});
     })
   }
   // console.log("Heyyy, Middleware is not working");
