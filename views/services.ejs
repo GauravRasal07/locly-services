@@ -50,7 +50,12 @@
             >
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#"
+            <a
+              class="nav-link"
+              href="#"
+              data-bs-toggle="offcanvas"
+              data-bs-target="#offcanvasWithBothOptions"
+              aria-controls="offcanvasWithBothOptions"
               ><i class="fas fa-user-circle"></i> Welcome, <%=
               currentUser.firstName %></a
             >
@@ -67,6 +72,40 @@
       > -->
     </div>
   </nav>
+
+  <div
+    class="offcanvas offcanvas-start"
+    data-bs-scroll="true"
+    tabindex="-1"
+    id="offcanvasWithBothOptions"
+    aria-labelledby="offcanvasWithBothOptionsLabel"
+  >
+    <div class="offcanvas-header">
+      <h5 class="offcanvas-title" id="offcanvasWithBothOptionsLabel">
+        <i class="fas fa-user-circle"></i> Welcome, <%= currentUser.firstName %>
+      </h5>
+      <button
+        type="button"
+        class="btn-close text-reset"
+        data-bs-dismiss="offcanvas"
+        aria-label="Close"
+      ></button>
+    </div>
+    <div class="offcanvas-body">
+      <p>
+        <div class="justify-content-center">
+          <div class="user-icon">
+            <%= currentUser.firstName[0] %><%= currentUser.lastName[0] %>
+          </div>
+        </div>
+        <ul class="list-group list-group-flush">
+          <li class="list-group-item"><%= currentUser.firstName %><%= currentUser.lastName %></li>
+          <li class="list-group-item"><%= currentUser.username %></li>
+          <li class="list-group-item"><%= currentUser.contactNumber %></li>
+        </ul>
+      </p>
+    </div>
+  </div>
 
   <div class="services-main">
     <!-- Service Title -->

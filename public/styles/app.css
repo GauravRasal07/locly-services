@@ -139,8 +139,38 @@ a {
   font-weight: bold;
 }
 
-.nav-link:hover, .nav-link.active {
+.nav-link:hover,
+.nav-link.active {
   color: #000 !important;
+}
+
+.offcanvas-header {
+  background: var(--light-green);
+}
+
+.offcanvas-body {
+  background: var(--text-light);
+}
+
+.user-icon {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: var(--red-orange);
+  height: 100px;
+  width: 100px;
+  border-radius: 50%;
+  font-weight: bold;
+  font-size: 54px;
+  margin: 2rem auto;
+  padding: 1rem;
+}
+
+.list-group-flush {
+  border-radius: 5px;
+  text-align: center;
+  width: 80%;
+  margin-left: 10%;
 }
 
 .dropdown-menu {
