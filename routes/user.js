@@ -2,6 +2,7 @@ const express = require("express");
 const router = express.Router();
 const User = require("../models/user");
 const Service = require("../models/service");
+const Appointment = require("../models/appointment");
 const middleware = require("../middleware/index");
 const passport = require("passport");
 
@@ -60,11 +61,13 @@ router.post("/register/provider", (req, res) => {
             console.log(err);
             res.redirect("back");
           } else {
-            user.providerId = service;
+            user.serviceId = service;
             user.serviceProvider = true;
             user.save();
             service.provider = user.firstName + " " + user.lastName;
+            service.providerId = user;
             service.save();
+
             req.flash(
               "success",
               "Successfully registered, Login with your credentials!"
@@ -120,7 +123,7 @@ router.get("/services", middleware.isLoggedIn, async (req, res) => {
     res.send("Here Provider Dashboard should appear!!!");
   } else {
     Service.find({}, (err, services) => {
-      res.render('services', {services: services});
+      res.render('services', {services});
     })
   }
   // console.log("Heyyy, Middleware is not working");
@@ -132,3 +135,27 @@ router.get("/dashboard", middleware.isLoggedIn, (req, res) => {
 });
 
 module.exports = router;
+
+
+//----------------Appointment Booking Route --------------------
+router.post("/bookAppointment/:id", async (req,res)=>{
+    const providerId = req.params.id;    
+    const appData = new Appointment(req.body);
+    
+    try{
+      let result = await appData.save();
+      result['providerId'] = providerId;
+      result = await result.save();
+      
+      let user = await User.findById(providerId);
+      user.appointments = [...user.appointments,result];
+      user = await user.save();
+      res.send({user:"Success"});
+    }
+
+    catch(err){
+      console.log(err);
+      res.send({errors:"Error Occurred"});
+    }
+  
+})

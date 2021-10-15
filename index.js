@@ -12,8 +12,9 @@ const app = express();
 
 const mongoose = require("mongoose");
 
+const DB_URI = 'mongodb+srv://LoclyUser:locly123@loclycluster.w92an.mongodb.net/myFirstDatabase?retryWrites=true&w=majority';
 mongoose
-  .connect(process.env.DBURI, {
+  .connect(DB_URI, {
     useNewUrlParser: true,
     useUnifiedTopology: true,
   })

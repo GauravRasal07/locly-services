@@ -316,3 +316,14 @@ textarea:focus-visible {
 .form-row .btn {
   float: right;
 }
+
+/* Book Appointment Form */
+#book-appointment-form .form-control{ 
+  margin-top: 0;
+  border-radius: 4px;
+  border: 1px solid gray;
+}
+
+#book-appointment-form textarea{
+  padding: 8px;
+}
