@@ -38,7 +38,7 @@ router.post("/register/consumer", (req, res) => {
       }
     });
   } else {
-    req.flash("err", "Check the password!!!");
+    req.flash("error", "Password not verified!");
     res.redirect("back");
   }
 });
@@ -78,7 +78,7 @@ router.post("/register/provider", (req, res) => {
       }
     });
   } else {
-    req.flash("err", "Check the password!!!");
+    req.flash("error", "Password not verified!");
     res.redirect("back");
   }
 });
