@@ -123,8 +123,8 @@ router.get("/services", middleware.isLoggedIn, async (req, res) => {
     res.send("Here Provider Dashboard should appear!!!");
   } else {
     Service.find({}, (err, services) => {
-      res.render('services', {services});
-    })
+      res.render("services", { services });
+    });
   }
   // console.log("Heyyy, Middleware is not working");
   // res.render("services");
@@ -136,26 +136,34 @@ router.get("/dashboard", middleware.isLoggedIn, (req, res) => {
 
 module.exports = router;
 
-
 //----------------Appointment Booking Route --------------------
-router.post("/bookAppointment/:id", async (req,res)=>{
-    const providerId = req.params.id;    
-    const appData = new Appointment(req.body);
-    
-    try{
-      let result = await appData.save();
-      result['providerId'] = providerId;
-      result = await result.save();
-      
-      let user = await User.findById(providerId);
-      user.appointments = [...user.appointments,result];
-      user = await user.save();
-      res.send({user:"Success"});
-    }
+router.post("/bookAppointment/:id", async (req, res) => {
+  const providerId = req.params.id;
+  const appData = new Appointment(req.body);
 
-    catch(err){
-      console.log(err);
-      res.send({errors:"Error Occurred"});
-    }
-  
-})
+  try {
+    let result = await appData.save();
+    result["providerId"] = providerId;
+    result = await result.save();
+
+    let user = await User.findById(providerId);
+    user.appointments = [...user.appointments, result];
+    user = await user.save();
+    res.send({ user: "Success" });
+  } catch (err) {
+    console.log(err);
+    res.send({ errors: "Error Occurred" });
+  }
+});
+
+router.get('/appointments/:userId', (req, res) => {
+  User.findById(req.params.userId)
+    .populate("appointments")
+    .exec((err, user) => {
+      if (err) {
+        res.status(404).send("Something went wrong!!!");
+      } else {
+        res.send(user);
+      }
+    });
+});

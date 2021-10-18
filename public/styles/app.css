@@ -237,11 +237,11 @@ a {
   padding: 5px 10px;
   color: var(--text-dark) !important;
   /* border: 2px solid var(--blue-info); */
-  background-color: var(--blue-info);
+  background-color: var(--yellow);
 }
 
 .appointment_btn:hover {
-  background-color: var(--blue-info);
+  background-color: var(--yellow);
   color: #fff !important;
 }
 
