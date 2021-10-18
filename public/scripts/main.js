@@ -4,10 +4,11 @@
 
 //---------------- API Call to the POST ROUTE for Appointment Booking ------------------
 let providerId = null;
+let userId = null;
 
-function storeProviderId(elem){
-    providerId = elem.dataset.id;
-    console.log(providerId);
+function storeId(elem){
+    providerId = elem.dataset.pid;
+    userId = elem.dataset.uid;
 }
 
 const appointmentForm = document.querySelector("#book-appointment-form");
@@ -22,7 +23,7 @@ appointmentForm.onsubmit = async (e) =>{
     })
 
     try {
-        const res = await fetch(`/bookAppointment/${providerId}`,{
+        const res = await fetch(`/bookAppointment/${providerId}/${userId}`,{
             method: 'POST',
             body: JSON.stringify(appData),
             headers: { 'Content-Type': 'application/json'}
