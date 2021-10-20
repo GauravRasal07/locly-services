@@ -1,0 +1,138 @@
+<%- include("partials/header") %>
+
+<main class="service-page">
+
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-md navbar-dark fixed-top cus-bg-dark p-1">
+        <div class="container-fluid px-2 py-2">
+        <a class="navbar-brand d-block px-3" href="/">LOCLY</a>
+        <!-- <h3 class="logo px-3 d-inline"><a href="/">LOCLY</a></h3> -->
+        <button
+            class="navbar-toggler"
+            type="button"
+            data-bs-toggle="collapse"
+            data-bs-target="#navbarNavDropdown"
+            aria-controls="navbarNavDropdown"
+            aria-expanded="false"
+            aria-label="Toggle navigation"
+        >
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNavDropdown">
+            <!-- <span class="text-light d-md-none d-block"><i class="fas fa-user-circle"></i> Welcome, <%= currentUser.firstName %></span> -->
+            <ul class="navbar-nav navbar-right">
+            <li class="nav-item">
+                <a class="nav-link" href="#"
+                ><i class="fas fa-bookmark"></i> About</a
+                >
+            </li>
+            <li class="nav-item dropdown">
+                <a
+                class="nav-link active dropdown-toggle"
+                href="#"
+                id="navbarDropdownMenuLink"
+                role="button"
+                data-bs-toggle="dropdown"
+                aria-haspopup="true"
+                aria-expanded="false"
+                >
+                <i class="fas fa-briefcase"></i> Services
+                </a>
+                <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                <li><a class="dropdown-item" href="#">Painter</a></li>
+                <li><a class="dropdown-item" href="#">Laundry</a></li>
+                <li><a class="dropdown-item" href="#">Carpenter</a></li>
+                <li><a class="dropdown-item" href="#">Electrician</a></li>
+                <li><a class="dropdown-item" href="#">Plumber</a></li>
+                </ul>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#"
+                ><i class="fas fa-phone-square-alt"></i> Contact</a
+                >
+            </li>
+            <li class="nav-item">
+                <a
+                class="nav-link"
+                href="#"
+                data-bs-toggle="offcanvas"
+                data-bs-target="#offcanvasWithBothOptions"
+                aria-controls="offcanvasWithBothOptions"
+                ><i class="fas fa-user-circle"></i> Welcome, <%=
+                currentUser.firstName %></a
+                >
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/logout"
+                ><i class="fas fa-sign-out"></i> logout</a
+                >
+            </li>
+            </ul>
+        </div>
+        <!-- <span class="text-light d-md-block d-none px-3"
+            ><i class="fas fa-user-circle"></i> Welcome, <%= currentUser.firstName %></span
+        > -->
+        </div>
+    </nav>
+
+    <!-- Appointments Container -->
+    <div class="container" style="margin-top: 8rem;">
+        <div class="row g-5">
+            
+            <!-- Appointment Card -->
+            <div class="col-md-4">
+                <div class="appointment-card p-2">
+                    <div class="w-100 text-primary px-0 py-1 h5 fw-bold">
+                        Appointment 1
+                    </div>
+
+                    <div class="row">
+                        <dt class="col-sm-3">Name:</dt>
+                        <dd class="col-sm-9">
+                            Tejas Podutwar
+                        </dd>
+                    </div>
+                    
+                    <div class="row">
+                        <dt class="col-sm-3">Date:</dt>
+                        <dd class="col-sm-9">
+                            12-07-2021
+                        </dd>
+                    </div>
+                    
+                    <div class="row">
+                        <dt class="col-sm-3">Mobile:</dt>
+                        <dd class="col-sm-9">
+                        +91 9823456789 
+                        </dd>
+                    </div>
+                    
+                    <div class="row">
+                        <dt class="col-sm-3">Address:</dt>
+                        <dd class="col-sm-9">
+                            <p class="cus-text-justify">
+                                Flat 302, Galaxy Apartment, Opp. Haji Malang Dargah, Buldana
+                            </p>
+                        </dd>
+                    </div>
+
+                    <div class="w-100 d-flex justify-content-end">
+                        <button 
+                            type="button" 
+                            class="btn btn-primary"
+                        >
+                        Mark as Done
+                        </button>
+                    </div>
+
+                </div>
+            </div>
+
+        </div>
+    </div>
+ 
+</main>
+
+
+
+<%- include("partials/footer") %>

@@ -50,6 +50,10 @@ a {
   background-color: var(--red-orange);
 }
 
+.cus-text-justify{
+  text-align: justify;
+}
+
 .row .col-md-6 {
   padding-left: 0 !important;
   padding-right: 0 !important;
@@ -326,4 +330,11 @@ textarea:focus-visible {
 
 #book-appointment-form textarea {
   padding: 8px;
+}
+
+
+/* Provider Dashboard */
+.appointment-card{
+  background-color: var(--text-light);
+  border-radius: 10px;
 }

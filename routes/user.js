@@ -120,7 +120,16 @@ router.delete("/user/:id", (req, res) => {
 //------------------service routes-----------------------
 router.get("/services", middleware.isLoggedIn, async (req, res) => {
   if (req.user.serviceProvider) {
-    res.send("Here Provider Dashboard should appear!!!");
+    const user = req.user;
+    appointments = []
+
+    user.appointments.forEach( async (appId) =>{
+        const app_data = await Appointment.findById(appId);
+        appointments = [...appointments,app_data];
+    })
+    
+
+    res.render("provider-dashboard");
   } else {
     Service.find({}, (err, services) => {
       res.render('services', {services});
@@ -130,9 +139,6 @@ router.get("/services", middleware.isLoggedIn, async (req, res) => {
   // res.render("services");
 });
 
-router.get("/dashboard", middleware.isLoggedIn, (req, res) => {
-  res.render("provider-dashboard");
-});
 
 module.exports = router;
 
