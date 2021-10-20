@@ -106,6 +106,11 @@
           <li class="list-group-item"><%= currentUser.contactNumber %></li>
         </ul>
       </p>
+      <div class="justify-content-center">
+        <a type="button" class="btn btn-warning" href="/appointments/<%= currentUser._id %>">
+          View appointments
+        </a>
+      </div>
     </div>
   </div>
 
@@ -120,13 +125,13 @@
       <!-- https://randomuser.me/api/portraits/men/12.jpg -->
 
       <div class="row g-3 justify-content-center">
-        <% services.forEach((service) => { %>
-        <div class="col-md-3">
-          <div class="p_card pb-3">
+        <% services.map((service, i) => { %>
+        <div class="col-md-3 p_card">
+          <div class="pb-3">
             <div class="p_card_top p-2">
               <div class="provider_pic_container">
                 <img
-                  src="https://randomuser.me/api/portraits/men/2.jpg"
+                  src="https://randomuser.me/api/portraits/lego/<%= i %>.jpg"
                   class="img-fluid provider_pic"
                   alt="pic"
                 />
@@ -151,7 +156,7 @@
               </div>
             </div>
             <div class="p-2">
-              <button type="button" class="btn btn-primary appointment_btn" 
+              <button type="button" class="btn btn-warning appointment_btn" 
                       data-bs-toggle="modal" 
                       data-bs-target="#exampleModal"
                       data-pid=<%= service.providerId %> 
@@ -165,10 +170,8 @@
         </div>
         <% }) %>
       </div>
-
     </div>
-  </div>
-  
+  </div>  
 
   <!-- Modal for appointment booking-->
   <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -182,27 +185,28 @@
           <form id="book-appointment-form">
             <div class="mb-3">
               <label for="booking_name" class="form-label">Name: </label>
-              <input type="text" name="name" class="form-control" id="booking_name">
+              <input type="text" name="name" class="form-control" id="booking_name" required>
             </div>
             <div class="mb-3">
               <label for="booking_phone" class="form-label">Mobile: </label>
-              <input type="number" name="mobile" class="form-control" id="booking_phone">
+              <input type="number" name="mobile" class="form-control" id="booking_phone" required>
             </div>
             <div class="form-group">
               <label for="service_address" class="form-label">Enter Address: </label>
                 <textarea name="address" 
                           class="form-control" rows="3" 
                           id="service_address"
+                          required
                 >
                 </textarea>
             </div>
             <div class="mb-3 mt-2">
               <label for="appointment_date" class="form-label">Select Appointment Date:</label>
-              <input type="date" name="date" class="form-control w-50" id="appointment_date">
+              <input type="datetime-local" name="date" class="form-control w-50" id="appointment_date">
             </div>
             <div>
               <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-              <button type="submit" class="btn btn-primary">Book Now</button>
+              <button type="submit" class="btn btn-warning">Book Now</button>
             </div>
           </form>
         </div>

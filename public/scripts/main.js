@@ -1,7 +1,5 @@
 // $(".alert").alert("close");
 
-
-
 //---------------- API Call to the POST ROUTE for Appointment Booking ------------------
 let providerId = null;
 let userId = null;
@@ -46,5 +44,5 @@ appointmentForm.onsubmit = async (e) =>{
         console.log(err);
     }
 
-    
-}
+    window.location.href = "/services";
+};

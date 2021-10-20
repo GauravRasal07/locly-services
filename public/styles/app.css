@@ -189,6 +189,18 @@ a {
   margin-top: 6rem;
 }
 
+.services-main .col-md-3 {
+  width: 24%;
+  margin-left: 0.5%;
+  margin-right: 0.5%;
+}
+
+.services-main .p_card:hover {
+  background: var(--red-orange);
+  cursor: pointer;
+  transition: all 1s;
+}
+
 .service_title {
   color: var(--text-dark);
   position: relative;
@@ -241,12 +253,12 @@ a {
   padding: 5px 10px;
   color: var(--text-dark) !important;
   /* border: 2px solid var(--blue-info); */
-  background-color: var(--blue-info);
+  background-color: var(--yellow);
 }
 
 .appointment_btn:hover {
-  background-color: var(--blue-info);
-  color: #fff !important;
+  background-color: var(--yellow);
+  /* color: #fff !important; */
 }
 
 .form-row {
@@ -332,9 +344,16 @@ textarea:focus-visible {
   padding: 8px;
 }
 
+<<<<<<< HEAD
 
 /* Provider Dashboard */
 .appointment-card{
   background-color: var(--text-light);
   border-radius: 10px;
+=======
+.appointments .row {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+>>>>>>> c9805b7fb19aa4bcad9e23c36af0de2d5e00ada6
 }
