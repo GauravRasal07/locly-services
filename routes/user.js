@@ -137,18 +137,25 @@ router.get("/dashboard", middleware.isLoggedIn, (req, res) => {
 module.exports = router;
 
 //----------------Appointment Booking Route --------------------
-router.post("/bookAppointment/:id", async (req, res) => {
-  const providerId = req.params.id;
+router.post("/bookAppointment/:pid/:uid", async (req, res) => {
+  const providerId = req.params.pid;
+  const userId = req.params.uid;
   const appData = new Appointment(req.body);
 
   try {
     let result = await appData.save();
     result["providerId"] = providerId;
+    result["userId"] = userId;
     result = await result.save();
 
-    let user = await User.findById(providerId);
+    let provider = await User.findById(providerId);
+    provider.appointments = [...provider.appointments, result];
+    provider = await provider.save();
+
+    let user = await User.findById(userId);
     user.appointments = [...user.appointments, result];
     user = await user.save();
+
     res.send({ user: "Success" });
   } catch (err) {
     console.log(err);
@@ -156,14 +163,14 @@ router.post("/bookAppointment/:id", async (req, res) => {
   }
 });
 
-router.get('/appointments/:userId', (req, res) => {
+router.get("/appointments/:userId", (req, res) => {
   User.findById(req.params.userId)
     .populate("appointments")
     .exec((err, user) => {
       if (err) {
         res.status(404).send("Something went wrong!!!");
       } else {
-        res.send(user);
+        res.render("appointments", { appointments: user.appointments });
       }
     });
 });

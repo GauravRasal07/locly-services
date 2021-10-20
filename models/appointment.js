@@ -11,6 +11,10 @@ var appointmentSchema = new Schema({
     providerId: {
         type: Schema.Types.ObjectId,
         ref: "User"
+    },
+    userId:{
+        type: Schema.Types.ObjectId,
+        ref: "User"
     }
 });
 

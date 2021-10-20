@@ -185,6 +185,18 @@ a {
   margin-top: 6rem;
 }
 
+.services-main .col-md-3 {
+  width: 24%;
+  margin-left: 0.5%;
+  margin-right: 0.5%;
+}
+
+.services-main .p_card:hover {
+  background: var(--red-orange);
+  cursor: pointer;
+  transition: all 1s;
+}
+
 .service_title {
   color: var(--text-dark);
   position: relative;
@@ -242,7 +254,7 @@ a {
 
 .appointment_btn:hover {
   background-color: var(--yellow);
-  color: #fff !important;
+  /* color: #fff !important; */
 }
 
 .form-row {
@@ -326,4 +338,10 @@ textarea:focus-visible {
 
 #book-appointment-form textarea {
   padding: 8px;
+}
+
+.appointments .row {
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
