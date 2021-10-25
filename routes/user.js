@@ -121,12 +121,10 @@ router.delete("/user/:id", (req, res) => {
 router.get("/services", middleware.isLoggedIn, async (req, res) => {
   if (req.user.serviceProvider) {
     const user = req.user;
-    appointments = []
+    console.log(user.id);
+    const appointments = await Appointment.find({providerId: user._id});
+    console.log(appointments);
 
-    user.appointments.forEach( async (appId) =>{
-        const app_data = await Appointment.findById(appId);
-        appointments = [...appointments,app_data];
-    })
     
 
     res.render("provider-dashboard");
