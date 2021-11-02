@@ -175,3 +175,17 @@ router.get("/appointments/:userId", (req, res) => {
       }
     });
 });
+
+
+//----------------Jon Done Status Update Route --------------------
+
+router.put("/appointments/:appId",async (req,res)=>{
+  try{
+    const result = await Appointment.findByIdAndUpdate(req.params.appId, {is_done:true});
+    res.send({ user: "Success" });
+  }
+  catch(err){
+    console.log(err);
+    res.send({ errors: "Error Occurred" });
+  }
+})

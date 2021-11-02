@@ -134,6 +134,8 @@
                                             <button 
                                                 type="button" 
                                                 class="btn btn-primary appointment_btn"
+                                                data-aid=<%= appointment.id %> 
+                                                onclick="UpdateStatus(this)"
                                             >
                                                 Mark as Done
                                             </button>
@@ -182,17 +184,7 @@
                                                 </p>
                                             </dd>
                     
-                                        </div>
-                    
-                                        <div class="w-100 d-flex justify-content-end">
-                                            <button 
-                                                type="button" 
-                                                class="btn btn-primary appointment_btn"
-                                            >
-                                                Mark as Done
-                                            </button>
-                                        </div>
-                    
+                                        </div>                 
                                     </div>
                                 </div>
                             <% } %> 
