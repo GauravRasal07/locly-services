@@ -126,48 +126,48 @@
 
       <div class="row g-3 justify-content-center">
         <% services.map((service, i) => { %>
-        <div class="col-md-3 p_card">
-          <div class="pb-3">
-            <div class="p_card_top p-2">
-              <div class="provider_pic_container">
-                <img
-                  src="https://randomuser.me/api/portraits/lego/<%= i %>.jpg"
-                  class="img-fluid provider_pic"
-                  alt="pic"
-                />
+          <div class="col-md-3 p_card">
+            <div class="pb-3">
+              <div class="p_card_top p-2">
+                <div class="provider_pic_container">
+                  <img
+                    src="https://randomuser.me/api/portraits/lego/<%= i %>.jpg"
+                    class="img-fluid provider_pic"
+                    alt="pic"
+                  />
+                </div>
+                <div class="provider_info p-2">
+                  <h5 class="m-0 p-1"><%= service.provider %></h5>
+                  <p class="m-0 p-1 text-muted"><%= service.area %></p>
+                </div>
               </div>
-              <div class="provider_info p-2">
-                <h5 class="m-0 p-1"><%= service.provider %></h5>
-                <p class="m-0 p-1 text-muted"><%= service.area %></p>
+              <div class="p_card_body p-2">
+                <div class="service_type">
+                  <span class="fw-bold">Service:</span>
+                  <%= service.serviceType %>
+                </div>
+                <div class="service_desc">
+                  <span class="fw-bold">Description:</span>
+                  <p class="m-0"><%= service.description %></p>
+                </div>
+                <div class="service_type">
+                  <span class="fw-bold">Basic Charges:</span>
+                  <%= service.basicCharges %>/- INR
+                </div>
               </div>
-            </div>
-            <div class="p_card_body p-2">
-              <div class="service_type">
-                <span class="fw-bold">Service:</span>
-                <%= service.serviceType %>
+              <div class="p-2">
+                <button type="button" class="btn btn-warning appointment_btn" 
+                        data-bs-toggle="modal" 
+                        data-bs-target="#exampleModal"
+                        data-pid=<%= service.providerId %> 
+                        data-uid=<%= currentUser.id %> 
+                        onclick="storeId(this)"
+                >
+                  Book Appointment
+                </button>
               </div>
-              <div class="service_desc">
-                <span class="fw-bold">Description:</span>
-                <p class="m-0"><%= service.description %></p>
-              </div>
-              <div class="service_type">
-                <span class="fw-bold">Basic Charges:</span>
-                <%= service.basicCharges %>/- INR
-              </div>
-            </div>
-            <div class="p-2">
-              <button type="button" class="btn btn-warning appointment_btn" 
-                      data-bs-toggle="modal" 
-                      data-bs-target="#exampleModal"
-                      data-pid=<%= service.providerId %> 
-                      data-uid=<%= currentUser.id %> 
-                      onclick="storeId(this)"
-              >
-                Book Appointment
-              </button>
             </div>
           </div>
-        </div>
         <% }) %>
       </div>
     </div>

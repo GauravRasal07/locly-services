@@ -77,56 +77,133 @@
 
     <!-- Appointments Container -->
     <div class="container" style="margin-top: 8rem;">
-        <div class="row g-5">
+        <div class="row g-5 p-3">
+
+            <h2 class="mt-2">Appointments</h2>
+            
+            <ul class="nav nav-pills nav-fill">
+                <li class="nav-item">
+                  <a class="nav-link active"  data-bs-toggle="pill" aria-current="page" href="#tab1">Pending</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" data-bs-toggle="pill" aria-current="page" href="#tab2">Done</a>
+                </li>
+            </ul>
+
+            <div class="tab-content">
+
+                <!-- Pending Appointments -->
+                <div id="tab1" class="tab-pane fade in active show mt-3">
+                    <div class="row g-5 p-1 justify-content-center">
+                        <% var appointment_num = 0; %> 
+                        <% appointments.map((appointment, i) => { %>
+                            <% if(!appointment.is_done){ %> 
+                                <% appointment_num++ %> 
+                                <div class="col-md-4">
+                                    <div class="appointment-card p-2 h-100">
+                                        <div class="w-100 text-primary px-0 py-1 h5 fw-bold">
+                                            Appointment <%= appointment_num %> 
+                                        </div>
+                    
+                                        <div class="row">
+                                            <dt class="col-sm-3">Name:</dt>
+                                            <dd class="col-sm-9">
+                                                <%= appointment.name %> 
+                                            </dd>
+                    
+                                            <dt class="col-sm-3">Date:</dt>
+                                            <dd class="col-sm-9">
+                                                <%= appointment.date %> 
+                                            </dd>
+                    
+                                            <dt class="col-sm-3">Mobile:</dt>
+                                            <dd class="col-sm-9">
+                                                <%= appointment.mobile %> 
+                                            </dd>
+                    
+                                            <dt class="col-sm-3">Address:</dt>
+                                            <dd class="col-sm-9">
+                                                <p class="cus-text-justify">
+                                                    <%= appointment.address %>
+                                                </p>
+                                            </dd>
+                    
+                                        </div>
+                    
+                                        <div class="w-100 d-flex justify-content-end">
+                                            <button 
+                                                type="button" 
+                                                class="btn btn-primary appointment_btn"
+                                            >
+                                                Mark as Done
+                                            </button>
+                                        </div>
+                    
+                                    </div>
+                                </div>
+                            <% } %> 
+                        <% }) %>
+                    </div>   
+                </div>
+
+                <!-- Done Appointments -->
+                <div id="tab2" class="tab-pane fade mt-3">
+                    <div class="row g-5 p-1 justify-content-center">
+                        <% var appointment_num = 0; %> 
+                        <% appointments.map((appointment, i) => { %>
+                            <% if(appointment.is_done){ %>
+                                <% appointment_num++ %> 
+                                <div class="col-md-4">
+                                    <div class="appointment-card p-2 h-100">
+                                        <div class="w-100 text-primary px-0 py-1 h5 fw-bold">
+                                            Appointment <%= appointment_num %> 
+                                        </div>
+                    
+                                        <div class="row">
+                                            <dt class="col-sm-3">Name:</dt>
+                                            <dd class="col-sm-9">
+                                                <%= appointment.name %> 
+                                            </dd>
+                    
+                                            <dt class="col-sm-3">Date:</dt>
+                                            <dd class="col-sm-9">
+                                                <%= appointment.date %> 
+                                            </dd>
+                    
+                                            <dt class="col-sm-3">Mobile:</dt>
+                                            <dd class="col-sm-9">
+                                                <%= appointment.mobile %> 
+                                            </dd>
+                    
+                                            <dt class="col-sm-3">Address:</dt>
+                                            <dd class="col-sm-9">
+                                                <p class="cus-text-justify">
+                                                    <%= appointment.address %>
+                                                </p>
+                                            </dd>
+                    
+                                        </div>
+                    
+                                        <div class="w-100 d-flex justify-content-end">
+                                            <button 
+                                                type="button" 
+                                                class="btn btn-primary appointment_btn"
+                                            >
+                                                Mark as Done
+                                            </button>
+                                        </div>
+                    
+                                    </div>
+                                </div>
+                            <% } %> 
+                        <% }) %>
+                    </div>  
+                </div>
+
+            </div>
             
             <!-- Appointment Card -->
-            <div class="col-md-4">
-                <div class="appointment-card p-2">
-                    <div class="w-100 text-primary px-0 py-1 h5 fw-bold">
-                        Appointment 1
-                    </div>
-
-                    <div class="row">
-                        <dt class="col-sm-3">Name:</dt>
-                        <dd class="col-sm-9">
-                            Tejas Podutwar
-                        </dd>
-                    </div>
-                    
-                    <div class="row">
-                        <dt class="col-sm-3">Date:</dt>
-                        <dd class="col-sm-9">
-                            12-07-2021
-                        </dd>
-                    </div>
-                    
-                    <div class="row">
-                        <dt class="col-sm-3">Mobile:</dt>
-                        <dd class="col-sm-9">
-                        +91 9823456789 
-                        </dd>
-                    </div>
-                    
-                    <div class="row">
-                        <dt class="col-sm-3">Address:</dt>
-                        <dd class="col-sm-9">
-                            <p class="cus-text-justify">
-                                Flat 302, Galaxy Apartment, Opp. Haji Malang Dargah, Buldana
-                            </p>
-                        </dd>
-                    </div>
-
-                    <div class="w-100 d-flex justify-content-end">
-                        <button 
-                            type="button" 
-                            class="btn btn-primary"
-                        >
-                        Mark as Done
-                        </button>
-                    </div>
-
-                </div>
-            </div>
+            
 
         </div>
     </div>

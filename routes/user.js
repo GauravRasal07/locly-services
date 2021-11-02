@@ -120,14 +120,11 @@ router.delete("/user/:id", (req, res) => {
 //------------------service routes-----------------------
 router.get("/services", middleware.isLoggedIn, async (req, res) => {
   if (req.user.serviceProvider) {
-    const user = req.user;
-    console.log(user.id);
-    const appointments = await Appointment.find({providerId: user._id});
-    console.log(appointments);
-
     
-
-    res.render("provider-dashboard");
+    const user = req.user;
+    const appointments = await Appointment.find({providerId: user._id});
+    
+    res.render("provider-dashboard",{appointments});
   } else {
     Service.find({}, (err, services) => {
       res.render("services", { services });
