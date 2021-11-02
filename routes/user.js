@@ -171,7 +171,7 @@ router.get("/appointments/:userId", (req, res) => {
       if (err) {
         res.status(404).send("Something went wrong!!!");
       } else {
-        res.render("appointments", { appointments: user.appointments });
+        res.render("cus_appointments", { appointments: user.appointments });
       }
     });
 });
