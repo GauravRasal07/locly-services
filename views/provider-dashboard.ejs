@@ -113,7 +113,12 @@
                     
                                             <dt class="col-sm-3">Date:</dt>
                                             <dd class="col-sm-9">
-                                                <%= appointment.date %> 
+                                                <%= appointment.date.toDateString() %> 
+                                            </dd>
+
+                                            <dt class="col-sm-3">Time:</dt>
+                                            <dd class="col-sm-9">
+                                                <%= appointment.date.toLocaleTimeString() %> 
                                             </dd>
                     
                                             <dt class="col-sm-3">Mobile:</dt>
@@ -169,7 +174,12 @@
                     
                                             <dt class="col-sm-3">Date:</dt>
                                             <dd class="col-sm-9">
-                                                <%= appointment.date %> 
+                                                <%= appointment.date.toDateString() %> 
+                                            </dd>
+
+                                            <dt class="col-sm-3">Time:</dt>
+                                            <dd class="col-sm-9">
+                                                <%= appointment.date.toLocaleTimeString() %> 
                                             </dd>
                     
                                             <dt class="col-sm-3">Mobile:</dt>
