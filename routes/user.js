@@ -121,16 +121,11 @@ router.delete("/user/:id", (req, res) => {
 //------------------service routes-----------------------
 router.get("/services", middleware.isLoggedIn, async (req, res) => {
   if (req.user.serviceProvider) {
-    const user = req.user;
-    appointments = []
-
-    user.appointments.forEach( async (appId) =>{
-        const app_data = await Appointment.findById(appId);
-        appointments = [...appointments,app_data];
-    })
     
-
-    res.render("provider-dashboard");
+    const user = req.user;
+    const appointments = await Appointment.find({providerId: user._id});
+    
+    res.render("provider-dashboard",{appointments});
   } else {
     Service.find({}, (err, services) => {
       res.render("services", { services });
@@ -177,7 +172,21 @@ router.get("/appointments/:userId", (req, res) => {
       if (err) {
         res.status(404).send("Something went wrong!!!");
       } else {
-        res.render("appointments", { appointments: user.appointments });
+        res.render("cus_appointments", { appointments: user.appointments });
       }
     });
 });
+
+
+//----------------Jon Done Status Update Route --------------------
+
+router.put("/appointments/:appId",async (req,res)=>{
+  try{
+    const result = await Appointment.findByIdAndUpdate(req.params.appId, {is_done:true});
+    res.send({ user: "Success" });
+  }
+  catch(err){
+    console.log(err);
+    res.send({ errors: "Error Occurred" });
+  }
+})

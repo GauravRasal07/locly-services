@@ -46,3 +46,31 @@ appointmentForm.onsubmit = async (e) =>{
 
     window.location.href = "/services";
 };
+
+
+//---------------- API Call to the Update Job Status ------------------
+async function UpdateStatus(btn){
+    
+    try {
+        const res = await fetch(`/appointments/${btn.dataset.aid}`,{
+            method: 'PUT'
+        }) 
+        const data = await res.json();
+
+        
+        if(data.user){
+            alert('Appointment status Updated!!');
+            
+        }
+        else{
+            alert('Something went wrong');
+        }
+
+    }
+    catch(err){
+        alert('Something went wrong');
+        console.log(err);
+    }
+    window.location.href = "/services";
+    
+}

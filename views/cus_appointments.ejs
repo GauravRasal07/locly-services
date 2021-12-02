@@ -1,0 +1,189 @@
+<%- include("partials/header") %>
+
+<main>
+
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-md navbar-dark fixed-top cus-bg-dark p-1">
+        <div class="container-fluid px-2 py-2">
+        <a class="navbar-brand d-block px-3" href="/">LOCLY</a>
+        <!-- <h3 class="logo px-3 d-inline"><a href="/">LOCLY</a></h3> -->
+        <button
+            class="navbar-toggler"
+            type="button"
+            data-bs-toggle="collapse"
+            data-bs-target="#navbarNavDropdown"
+            aria-controls="navbarNavDropdown"
+            aria-expanded="false"
+            aria-label="Toggle navigation"
+        >
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNavDropdown">
+            <!-- <span class="text-light d-md-none d-block"><i class="fas fa-user-circle"></i> Welcome, <%= currentUser.firstName %></span> -->
+            <ul class="navbar-nav navbar-right">
+            <li class="nav-item">
+                <a class="nav-link" href="#"
+                ><i class="fas fa-bookmark"></i> About</a
+                >
+            </li>
+            <li class="nav-item">
+                <a
+                class="nav-link"
+                href="/services"
+                >
+                <i class="fas fa-briefcase"></i> Services
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#"
+                ><i class="fas fa-phone-square-alt"></i> Contact</a
+                >
+            </li>
+            <li class="nav-item">
+                <a
+                class="nav-link"
+                href="#"
+                data-bs-toggle="offcanvas"
+                data-bs-target="#offcanvasWithBothOptions"
+                aria-controls="offcanvasWithBothOptions"
+                ><i class="fas fa-user-circle"></i> Welcome, <%=
+                currentUser.firstName %></a
+                >
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/logout"
+                ><i class="fas fa-sign-out"></i> logout</a
+                >
+            </li>
+            </ul>
+        </div>
+        <!-- <span class="text-light d-md-block d-none px-3"
+            ><i class="fas fa-user-circle"></i> Welcome, <%= currentUser.firstName %></span
+        > -->
+        </div>
+    </nav>
+
+
+    <div class="container" style="margin-top: 10rem;">
+        <div class="row g-5 p-3">
+          
+            <h2 class="mt-2">Appointments</h2>
+                  
+            <ul class="nav nav-pills nav-fill">
+                <li class="nav-item">
+                  <a class="nav-link active"  data-bs-toggle="pill" aria-current="page" href="#tab1">Booked</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" data-bs-toggle="pill" aria-current="page" href="#tab2">Completed</a>
+                </li>
+            </ul>
+            
+      
+            <div class="tab-content">
+      
+              <!-- Booked Appointments -->
+              <div id="tab1" class="tab-pane fade in active show mt-3">
+                  <div class="row g-5 p-1 justify-content-center">
+                      <% var appointment_num = 0; %> 
+                      <% appointments.map((appointment, i) => { %>
+                          <% if(!appointment.is_done){ %> 
+                              <% appointment_num++ %> 
+                              <div class="col-md-4">
+                                  <div class="appointment-card p-2 h-100">
+                                      <div class="w-100 text-primary px-0 py-1 h5 fw-bold">
+                                          Appointment <%= appointment_num %> 
+                                      </div>
+                  
+                                      <div class="row">
+                                          <dt class="col-sm-3">Name:</dt>
+                                          <dd class="col-sm-9">
+                                              <%= appointment.name %> 
+                                          </dd>
+                  
+                                          <dt class="col-sm-3">Date:</dt>
+                                            <dd class="col-sm-9">
+                                                <%= appointment.date.toDateString() %> 
+                                            </dd>
+
+                                            <dt class="col-sm-3">Time:</dt>
+                                            <dd class="col-sm-9">
+                                                <%= appointment.date.toLocaleTimeString() %> 
+                                            </dd>
+                  
+                                          <dt class="col-sm-3">Mobile:</dt>
+                                          <dd class="col-sm-9">
+                                              <%= appointment.mobile %> 
+                                          </dd>
+                  
+                                          <dt class="col-sm-3">Address:</dt>
+                                          <dd class="col-sm-9">
+                                              <p class="cus-text-justify">
+                                                  <%= appointment.address %>
+                                              </p>
+                                          </dd>
+                  
+                                      </div>
+                                  </div>
+                              </div>
+                          <% } %> 
+                      <% }) %>
+                  </div>   
+              </div>
+      
+              <!-- Completed Appointments -->
+              <div id="tab2" class="tab-pane fade mt-3">
+                  <div class="row g-5 p-1 justify-content-center">
+                      <% var appointment_num = 0; %> 
+                      <% appointments.map((appointment, i) => { %>
+                          <% if(appointment.is_done){ %>
+                              <% appointment_num++ %> 
+                              <div class="col-md-4">
+                                  <div class="appointment-card p-2 h-100">
+                                      <div class="w-100 text-primary px-0 py-1 h5 fw-bold">
+                                          Appointment <%= appointment_num %> 
+                                      </div>
+                  
+                                      <div class="row">
+                                          <dt class="col-sm-3">Name:</dt>
+                                          <dd class="col-sm-9">
+                                              <%= appointment.name %> 
+                                          </dd>
+                  
+                                          <dt class="col-sm-3">Date:</dt>
+                                        <dd class="col-sm-9">
+                                            <%= appointment.date.toDateString() %> 
+                                        </dd>
+
+                                        <dt class="col-sm-3">Time:</dt>
+                                        <dd class="col-sm-9">
+                                            <%= appointment.date.toLocaleTimeString() %> 
+                                        </dd>
+                  
+                                          <dt class="col-sm-3">Mobile:</dt>
+                                          <dd class="col-sm-9">
+                                              <%= appointment.mobile %> 
+                                          </dd>
+                  
+                                          <dt class="col-sm-3">Address:</dt>
+                                          <dd class="col-sm-9">
+                                              <p class="cus-text-justify">
+                                                  <%= appointment.address %>
+                                              </p>
+                                          </dd>
+                  
+                                      </div>                 
+                                  </div>
+                              </div>
+                          <% } %> 
+                      <% }) %>
+                  </div>  
+              </div> 
+      
+            </div>
+            
+        </div>
+    </div>
+
+</main>
+
+<%- include("partials/footer") %>

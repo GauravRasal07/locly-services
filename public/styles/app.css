@@ -349,3 +349,27 @@ textarea:focus-visible {
   align-items: center;
   justify-content: center;
 }
+
+/* Provider DashBoard */
+
+.appointment-card{
+  background-color: var(--text-light);
+  border-radius: 10px;
+}
+
+.appointment-card:hover{
+  background-color: var(--red-orange);
+}
+
+.markDone_btn{
+  background-color: var(--yellow);
+}
+
+.markDone_btn:hover{
+  background-color: var(--yellow);
+}
+
+.nav-pills>.nav-item>.active{
+  background-color: var(--yellow);
+  color: #eee !important;
+}
