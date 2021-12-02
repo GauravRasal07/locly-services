@@ -9,17 +9,27 @@ const localStrategy = require("passport-local");
 const User = require("./models/user");
 const dotenv = require("dotenv").config();
 const app = express();
+const errorMiddleware = require('./middleware/error');
 
 const mongoose = require("mongoose");
 
+//Handling UNcaught exceptions
+process.on('uncaughtException', err => {
+  console.log(`Error: ${err.message}`);
+  console.log("Shutting down the server due to uncaught exception");
+
+  process.exit(1);
+})
+
+
 const DB_URI = 'mongodb+srv://LoclyUser:locly123@loclycluster.w92an.mongodb.net/myFirstDatabase?retryWrites=true&w=majority';
+
 mongoose
   .connect(DB_URI, {
     useNewUrlParser: true,
     useUnifiedTopology: true,
   })
   .then(() => console.log("Connected to Locly Database!"))
-  .catch((error) => console.log(error.message));
 
 app.use(
   require("express-session")({
@@ -36,6 +46,8 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.json());
 
 app.use(expressSanitizer());
+
+app.use(errorMiddleware);
 
 app.use(flash());
 
@@ -63,7 +75,19 @@ app.use(function (req, res, next) {
 app.use(require("./routes/user.js"));
 
 const PORT = process.env.PORT || 3000;
-app.listen(PORT, function () {
+
+const server = app.listen(PORT, function () {
   console.log("The Server is Listening!!!");
   console.log(`Visit here: http://localhost:${PORT}`);
 });
+
+
+//Handling the error caused by unhandled promise rejection
+process.on('unhandledRejection', (err) => {
+  console.log(`Error: ${err.message}`);
+  console.log("Shutting down the server due to unhandled Promise Rejection");
+
+  server.close(() => {
+    process.exit(1);
+  })
+})
