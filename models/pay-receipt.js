@@ -4,25 +4,25 @@ var receiptSchema = new mongoose.Schema({
     user: {
         type: mongoose.Schema.Types.ObjectId,
         ref: "User",
-        required: true
+        required: [true, "User is required"]
     },
     serviceProvider: {
         type: mongoose.Schema.Types.ObjectId,
         ref: "Service",
-        required: true
+        required: [true, "Service Provider is required"]
     },
     amount: {
-        type: Number,
-        required: true
+        type: [Number, "Amount should be numeric value"],
+        required: [true, "Amount is required"]
     },
     modeOfTransaction: {
         type: String,
-        required: true
+        required: [true, "Mode of Transaction is required"]
     },
     receiptNumber: {
-        type: Number,
-        required: true,
-        unique: true
+        type: [Number, "Receipt Number should be numeric value"],
+        required: [true, "Receipt Number is required"],
+        unique: [true, "Receipt Number already exists"]
     }
 });
 

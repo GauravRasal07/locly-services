@@ -6,18 +6,18 @@ var serviceSchema = new mongoose.Schema({
   },
   area: {
     type: String,
-    required: true,
+    required: [true, "Please enter area"],
   },
   basicCharges: {
-    type: Number,
-    required: true,
+    type: [Number, "Basic Charges should be a number"],
+    required: [true, "Please enter basic charges"],
   },
   description: {
     type: String,
   },
   provider: {
     type: String,
-    required: true,
+    required: [true, "Please enter provider"],
   },
   providerId: {
     type: mongoose.Schema.Types.ObjectId,

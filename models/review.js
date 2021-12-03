@@ -11,11 +11,11 @@ var reviewSchema = new mongoose.Schema({
     },
     rating: {
         type: Number,
-        required: true
+        required: [true, "Rating is required"]
     },
     review: {
         type: String,
-        required: true
+        required: [true, "Review message is required"]
     },
     createdAt: {
         type: Date,

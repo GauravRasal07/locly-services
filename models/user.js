@@ -8,21 +8,21 @@ passportLocalMongoose = require("passport-local-mongoose");
 var userSchema = new Schema({
   username: {
     type: String,
-    unique: true,
-    required: true,
+    unique: [true, "Username already exists"],
+    required: [true, "Username is required"],
   },
   // email: { type: String, unique: true, required: true },
   firstName: {
-    type: String,
-    required: true,
+    type: [String, "First name should be string"],
+    required: [true, "First name is required"],
   },
   lastName: {
-    type: String,
-    required: true,
+    type: [String, "Last name should be string"],
+    required: [true, "Last name is required"],
   },
   contactNumber: {
-    type: Number,
-    required: true,
+    type: [Number, "Contact number should be number"],
+    required: [true, "Contact number is required"],
   },
   isAdmin: {
     type: Boolean,
@@ -50,7 +50,7 @@ var userSchema = new Schema({
   ],
   password: {
     type: String,
-    required: true,
+    // required: [true, "Password is required"],
   },
   resetPasswordToken: {
     type: String,

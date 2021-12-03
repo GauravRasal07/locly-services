@@ -23,7 +23,8 @@ router.post("/register/consumer", (req, res) => {
     let newUser = new User(data.user);
     User.register(newUser, data.password, (err, user) => {
       if (err) {
-        req.flash("error", "Something went wrong, Try again later!");
+        req.flash("error", err.message);
+        console.log(err);
         res.redirect("back");
       } else {
         // passport.authenticate("local")(req, res, () => {
@@ -38,7 +39,7 @@ router.post("/register/consumer", (req, res) => {
       }
     });
   } else {
-    req.flash("error", "Password not verified!");
+    req.flash("error", "Both password fields must match!");
     res.redirect("back");
   }
 });
@@ -120,11 +121,10 @@ router.delete("/user/:id", (req, res) => {
 //------------------service routes-----------------------
 router.get("/services", middleware.isLoggedIn, async (req, res) => {
   if (req.user.serviceProvider) {
-    
     const user = req.user;
-    const appointments = await Appointment.find({providerId: user._id});
-    
-    res.render("provider-dashboard",{appointments});
+    const appointments = await Appointment.find({ providerId: user._id });
+
+    res.render("provider-dashboard", { appointments });
   } else {
     Service.find({}, (err, services) => {
       res.render("services", { services });
@@ -133,7 +133,6 @@ router.get("/services", middleware.isLoggedIn, async (req, res) => {
   // console.log("Heyyy, Middleware is not working");
   // res.render("services");
 });
-
 
 module.exports = router;
 
@@ -176,16 +175,16 @@ router.get("/appointments/:userId", (req, res) => {
     });
 });
 
-
 //----------------Jon Done Status Update Route --------------------
 
-router.put("/appointments/:appId",async (req,res)=>{
-  try{
-    const result = await Appointment.findByIdAndUpdate(req.params.appId, {is_done:true});
+router.put("/appointments/:appId", async (req, res) => {
+  try {
+    const result = await Appointment.findByIdAndUpdate(req.params.appId, {
+      is_done: true,
+    });
     res.send({ user: "Success" });
-  }
-  catch(err){
+  } catch (err) {
     console.log(err);
     res.send({ errors: "Error Occurred" });
   }
-})
+});
