@@ -7,28 +7,27 @@ const expressSanitizer = require("express-sanitizer");
 const methodOverRide = require("method-override");
 const localStrategy = require("passport-local");
 const User = require("./models/user");
+const Receipt = require("./models/pay-receipt");
+const Review = require("./models/review");
 const dotenv = require("dotenv").config();
 const app = express();
 
 const mongoose = require("mongoose");
 
 //Handling UNcaught exceptions
-process.on('uncaughtException', err => {
+process.on("uncaughtException", (err) => {
   console.log(`Error: ${err.message}`);
   console.log("Shutting down the server due to uncaught exception");
 
   process.exit(1);
-})
-
-
-const DB_URI = 'mongodb+srv://LoclyUser:locly123@loclycluster.w92an.mongodb.net/myFirstDatabase?retryWrites=true&w=majority';
+});
 
 mongoose
-  .connect(DB_URI, {
+  .connect(process.env.DB_URI, {
     useNewUrlParser: true,
     useUnifiedTopology: true,
   })
-  .then(() => console.log("Connected to Locly Database!"))
+  .then(() => console.log("Connected to Locly Database!"));
 
 app.use(
   require("express-session")({
@@ -78,13 +77,12 @@ const server = app.listen(PORT, function () {
   console.log(`Visit here: http://localhost:${PORT}`);
 });
 
-
 //Handling the error caused by unhandled promise rejection
-process.on('unhandledRejection', (err) => {
+process.on("unhandledRejection", (err) => {
   console.log(`Error: ${err.message}`);
   console.log("Shutting down the server due to unhandled Promise Rejection");
 
   server.close(() => {
     process.exit(1);
-  })
-})
+  });
+});
