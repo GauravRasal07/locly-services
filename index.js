@@ -9,7 +9,6 @@ const localStrategy = require("passport-local");
 const User = require("./models/user");
 const dotenv = require("dotenv").config();
 const app = express();
-const errorMiddleware = require('./middleware/error');
 
 const mongoose = require("mongoose");
 
@@ -46,8 +45,6 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.json());
 
 app.use(expressSanitizer());
-
-app.use(errorMiddleware);
 
 app.use(flash());
 

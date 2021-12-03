@@ -4,73 +4,68 @@
 let providerId = null;
 let userId = null;
 
-function storeId(elem){
-    providerId = elem.dataset.pid;
-    userId = elem.dataset.uid;
+function storeId(elem) {
+  providerId = elem.dataset.pid;
+  userId = elem.dataset.uid;
 }
+
+let services = null;
+loadServices = (ele) => {
+  console.log("Heyy!");
+  services = ele.dataset.serv;
+  console.log(ele.dataset);
+};
 
 const appointmentForm = document.querySelector("#book-appointment-form");
 
-appointmentForm.onsubmit = async (e) =>{
-    e.preventDefault();
-    let formData = new FormData(appointmentForm);
+appointmentForm.onsubmit = async (e) => {
+  e.preventDefault();
+  let formData = new FormData(appointmentForm);
 
-    let appData = {}
-    formData.forEach( (val,key) =>{
-        appData[key]=val;
-    })
+  let appData = {};
+  formData.forEach((val, key) => {
+    appData[key] = val;
+  });
 
-    try {
-        const res = await fetch(`/bookAppointment/${providerId}/${userId}`,{
-            method: 'POST',
-            body: JSON.stringify(appData),
-            headers: { 'Content-Type': 'application/json'}
-        }) 
-        const data = await res.json();
-        
-        if(data.user){
-            alert('Appointment booked successfully!!');
-            window.location.href = '/services';
-        }
-        else{
-            alert('Something went wrong');
-        }
+  try {
+    const res = await fetch(`/bookAppointment/${providerId}/${userId}`, {
+      method: "POST",
+      body: JSON.stringify(appData),
+      headers: { "Content-Type": "application/json" },
+    });
+    const data = await res.json();
 
-        window.location.href = '/services';
-        
-    } 
-
-    catch (err) {
-        console.log(err);
+    if (data.user) {
+      alert("Appointment booked successfully!!");
+      window.location.href = "/services";
+    } else {
+      alert("Something went wrong");
     }
 
     window.location.href = "/services";
+  } catch (err) {
+    console.log(err);
+  }
+
+  window.location.href = "/services";
 };
 
-
 //---------------- API Call to the Update Job Status ------------------
-async function UpdateStatus(btn){
-    
-    try {
-        const res = await fetch(`/appointments/${btn.dataset.aid}`,{
-            method: 'PUT'
-        }) 
-        const data = await res.json();
+async function UpdateStatus(btn) {
+  try {
+    const res = await fetch(`/appointments/${btn.dataset.aid}`, {
+      method: "PUT",
+    });
+    const data = await res.json();
 
-        
-        if(data.user){
-            alert('Appointment status Updated!!');
-            
-        }
-        else{
-            alert('Something went wrong');
-        }
-
+    if (data.user) {
+      alert("Appointment status Updated!!");
+    } else {
+      alert("Something went wrong");
     }
-    catch(err){
-        alert('Something went wrong');
-        console.log(err);
-    }
-    window.location.href = "/services";
-    
+  } catch (err) {
+    alert("Something went wrong");
+    console.log(err);
+  }
+  window.location.href = "/services";
 }

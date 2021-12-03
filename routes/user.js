@@ -4,7 +4,6 @@ const User = require("../models/user");
 const Service = require("../models/service");
 const Appointment = require("../models/appointment");
 const middleware = require("../middleware/index");
-const ErrorHandler = require('../../Ecode-project/test-ecode/utils/errorHandler');
 const passport = require("passport");
 
 //-----------Landing Page--------------

@@ -50,7 +50,7 @@ a {
   background-color: var(--red-orange);
 }
 
-.cus-text-justify{
+.cus-text-justify {
   text-align: justify;
 }
 
@@ -154,6 +154,15 @@ a {
 
 .offcanvas-body {
   background: var(--text-light);
+}
+
+.filter-btn {
+  padding: 0.5rem 1rem;
+  border-radius: 5px;
+  background: var(--text-light);
+  border: none;
+  width: 10%;
+  right: 0;
 }
 
 .user-icon {
@@ -352,24 +361,24 @@ textarea:focus-visible {
 
 /* Provider DashBoard */
 
-.appointment-card{
+.appointment-card {
   background-color: var(--text-light);
   border-radius: 10px;
 }
 
-.appointment-card:hover{
+.appointment-card:hover {
   background-color: var(--red-orange);
 }
 
-.markDone_btn{
+.markDone_btn {
   background-color: var(--yellow);
 }
 
-.markDone_btn:hover{
+.markDone_btn:hover {
   background-color: var(--yellow);
 }
 
-.nav-pills>.nav-item>.active{
+.nav-pills > .nav-item > .active {
   background-color: var(--yellow);
   color: #eee !important;
 }
