@@ -20,67 +20,83 @@ router.post("/register/consumer", (req, res) => {
   // let data = req.sanitize(req.body);
   let data = req.body;
   if (data.password === data.confirm_pass) {
-    let newUser = new User(data.user);
+    let newUser = new User({
+      username: data.username,
+      firstName: data.firstName,
+      lastName: data.lastName,
+      contactNumber: data.contactNumber,
+    });
     User.register(newUser, data.password, (err, user) => {
       if (err) {
-        req.flash("error", err.message);
+        // req.flash("error", err.message);
         console.log(err);
-        res.redirect("back");
+        res.send({ message: err.message });
       } else {
-        // passport.authenticate("local")(req, res, () => {
-        //   req.flash("success", "Successfully registered as consumer!");
-        //   res.render("home");
-        // });
         req.flash(
           "success",
           "Successfully registered, Login with your credentials!"
         );
-        res.redirect("/login");
+        res.send({
+          success: true,
+          message: "Successfully registered, Login with your credentials!",
+        });
       }
     });
   } else {
-    req.flash("error", "Both password fields must match!");
-    res.redirect("back");
+    // req.flash("error", "Both password fields must match!");
+    res.send({ message: "Something went wrong!" });
   }
 });
 
 router.post("/register/provider", (req, res) => {
   let data = req.body;
   if (data.password === data.confirm_pass) {
-    let newUser = new User(data.user);
+    let newUser = new User({
+      username: data.username,
+      firstName: data.firstName,
+      lastName: data.lastName,
+      contactNumber: data.contactNumber,
+    });
     User.register(newUser, data.password, (err, user) => {
       if (err) {
-        req.flash("error", "Something went wrong, Try again later!");
+        // req.flash("error", "Something went wrong, Try again later!");
         console.log(err);
-        res.redirect("back");
+        res.send({ message: err.message });
       } else {
-        let provider = data.service;
+        let provider = {
+          serviceType: data.serviceType,
+          basicCharges: data.basicCharges,
+          area: data.area,
+          description: data.description,
+          provider: data.firstName + " " + data.lastName,
+          providerId: user._id,
+        };
         // console.log(provider);
         Service.create(provider, (err, service) => {
           if (err) {
-            req.flash("error", "Something went wrong, Try again later!");
+            // req.flash("error", "Something went wrong, Try again later!");
             console.log(err);
-            res.redirect("back");
+            res.send({ message: err.message });
           } else {
             user.serviceId = service;
             user.serviceProvider = true;
             user.save();
-            service.provider = user.firstName + " " + user.lastName;
-            service.providerId = user;
-            service.save();
 
             req.flash(
               "success",
               "Successfully registered, Login with your credentials!"
             );
-            res.redirect("/login");
+            res.send({
+              success: true,
+              message: "Successfully registered, Login with your credentials!",
+            });
           }
         });
       }
     });
   } else {
-    req.flash("error", "Password not verified!");
-    res.redirect("back");
+    // req.flash("error", "Password not verified!");
+    res.send({ message: "Something went wrong!" });
   }
 });
 

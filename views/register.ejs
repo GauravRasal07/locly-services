@@ -1,4 +1,15 @@
 <%- include("partials/header") %>
+<style>
+  .error {
+    color: #ff5a28;
+    font-size: 12px;
+  }
+
+  .error-msg {
+    color: #ff5a28;
+    font-size: 12px;
+  }
+</style>
 
 <main>
     
@@ -44,97 +55,72 @@
         role="tabpanel"
         aria-labelledby="cons-tab"
       >
-        <form action="/register/consumer" method="post">
-        <!-- <div class="form-group">
-          <label for="exampleInputusername">Username</label>
-          <input
-            type="text"
-            class="form-control"
-            id="exampleInputusername"
-            aria-describedby="emailHelp"
-            placeholder="Enter username"
-          />
-        </div> -->
+        <form id="reg-user">
         <div class="form-group">
-          <!-- <label for="exampleInputEmail1">Email address</label> -->
           <input
             type="email"
             class="form-control"
-            id="exampleInputEmail1"
+            id="uname"
             aria-describedby="emailHelp"
             placeholder="Email address"
-            name="user[username]"
-            required
+            name="username"
           />
-          <!-- <small id="emailHelp" class="form-text text-muted"
-            >We'll never share your email with anyone else.</small
-          > -->
         </div>
         <div class="row">
             <div class="col-md-6">
                 <div class="form-group px-2">
-            <!-- <label for="exampleInputname">First Name</label> -->
                 <input
                     type="text"
                     class="form-control"
-                    id="exampleInputname"
+                    id="fname"
                     aria-describedby="emailHelp"
                     placeholder="First Name"
-                    name="user[firstName]"
+                    name="firstName"
                 />
                 </div>
             </div>
             <div class="col-md-6">
                 <div class="form-group px-2">
-                <!-- <label for="exampleInputlname">Last Name</label> -->
                 <input
                     type="text"
                     class="form-control"
-                    id="exampleInputlname"
+                    id="lname"
                     aria-describedby="emailHelp"
                     placeholder="Last Name"
-                    name="user[lastName]"
+                    name="lastName"
                 />
                 </div>
             </div>
         </div>
         <div class="form-group">
-          <!-- <label for="exampleInputnumber">Contact Number</label> -->
           <input
             type="tel"
             class="form-control"
-            id="exampleInputnumber"
+            id="contact_number"
             aria-describedby="emailHelp"
             placeholder="Contact Number"
-            name="user[contactNumber]"
-            minlength="10"
-            maxlength="10"
-            required
+            name="contactNumber"
           />
         </div>
         <div class="form-group">
-          <!-- <label for="exampleInputPassword1">Password</label> -->
           <input
             type="password"
             class="form-control"
-            id="exampleInputPassword1"
+            id="password"
             placeholder="Password"
             name="password"
-            required
           />
         </div>
         <div class="form-group">
-          <!-- <label for="exampleInputPassword1">Password</label> -->
           <input
             type="password"
             class="form-control"
-            id="exampleInputPassword1"
+            id="confirm_pass"
             placeholder="Confirm Password"
             name="confirm_pass"
-            required
           />
         </div>
-        <button type="submit" class="btn btn-warning mt-3">Register</button>
+        <button type="submit" id="reg-user-btn" class="btn btn-warning mt-3">Register</button>
       </form>
       </div>
       <div
@@ -143,78 +129,57 @@
         role="tabpanel"
         aria-labelledby="pro-tab"
       >
-        <form action="/register/provider" method="post">
-        <!-- <div class="form-group">
-          <label for="exampleInputusername">Username</label>
-          <input
-            type="text"
-            class="form-control"
-            id="exampleInputusername"
-            aria-describedby="emailHelp"
-            placeholder="Enter username"
-          />
-        </div> -->
+        <form id="reg-provider">
         <div class="form-group">
-          <!-- <label for="exampleInputEmail1">Email address</label> -->
           <input
             type="email"
             class="form-control"
-            id="exampleInputEmail1"
+            id="Email1"
             aria-describedby="emailHelp"
             placeholder="Email address"
-            name="user[username]"
-            required
+            name="username"
           />
-          <!-- <small id="emailHelp" class="form-text text-muted"
-            >We'll never share your email with anyone else.</small
-          > -->
         </div>
         <div class="row">
             <div class="col-md-6">
                 <div class="form-group px-2">
-            <!-- <label for="exampleInputname">First Name</label> -->
                 <input
                     type="text"
                     class="form-control"
-                    id="exampleInputname"
+                    id="name"
                     aria-describedby="emailHelp"
                     placeholder="First Name"
-                    name="user[firstName]"
+                    name="firstName"
                 />
                 </div>
             </div>
             <div class="col-md-6">
                 <div class="form-group px-2">
-                <!-- <label for="exampleInputlname">Last Name</label> -->
                 <input
                     type="text"
                     class="form-control"
-                    id="exampleInputlname"
+                    id="1lname"
                     aria-describedby="emailHelp"
                     placeholder="Last Name"
-                    name="user[lastName]"
+                    name="lastName"
                 />
                 </div>
             </div>
         </div>
         <div class="form-group">
-          <!-- <label for="exampleInputnumber">Contact Number</label> -->
             <input
                 type="tel"
                 class="form-control"
-                id="exampleInputnumber"
+                id="number"
                 aria-describedby="emailHelp"
                 placeholder="Contact Number"
-                name="user[contactNumber]"
-                minlength="10"
-                maxlength="10"
-                required
+                name="contactNumber"
             />
         </div>
         <div class="row">
             <div class="col-md-6">
                 <div class="form-group px-2">
-                <select name="service[serviceType]" class="form-select" aria-label="Default select example">
+                <select name="serviceType" id="service" class="form-select" aria-label="Default select example">
                     <option selected>Service Type</option>
                     <option value="Electrician">Electrician</option>
                     <option value="Plumber">Plumber</option>
@@ -226,43 +191,38 @@
             </div>
             <div class="col-md-6">
                 <div class="form-group">
-                    <!-- <label for="exampleInputPassword1">Password</label> -->
                     <input
                         type="number" 
                         min="0.00" 
                         step="10.00"
                         class="form-control"
-                        id="exampleInputPassword1"
+                        id="b-charges"
                         placeholder="Basic Charges"
-                        name="service[basicCharges]"
-                        required
+                        name="basicCharges"
                     />
                 </div>
             </div>
         </div>
         <div class="form-group">
-            <!-- <label for="exampleInputPassword1">Password</label> -->
             <input
                 type="text" 
                 class="form-control"
-                id="exampleInputPassword1"
+                id="city"
                 placeholder="Address(City & State)"
-                name="service[area]"
-                required
+                name="area"
             />
         </div>
         <div class="form-group">
-            <textarea name="service[description]" class="form-control" rows="3" placeholder="Describe your service in short"></textarea>
+            <textarea name="description" id="desc" class="form-control" rows="3" placeholder="Describe your service in short"></textarea>
         </div>
         <div class="form-group">
           <!-- <label for="exampleInputPassword1">Password</label> -->
           <input
             type="password"
             class="form-control"
-            id="exampleInputPassword1"
+            id="Password1"
             placeholder="Password"
             name="password"
-            required
           />
         </div>
         <div class="form-group">
@@ -270,13 +230,12 @@
           <input
             type="password"
             class="form-control"
-            id="exampleInputPassword1"
+            id="c_pass"
             placeholder="Confirm Password"
             name="confirm_pass"
-            required
           />
         </div>
-        <button type="submit" class="btn btn-warning mt-3">Register as Provider</button>
+        <button type="submit" id="reg-provider-btn" class="btn btn-warning mt-3">Register as Provider</button>
       </form>
       </div>
       </div>
