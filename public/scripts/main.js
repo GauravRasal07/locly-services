@@ -197,7 +197,7 @@ $("#reg-user-btn").click((e) => {
       beforeSend: (request) => {
         $("#reg-user-btn").innerHTML = "Wait...";
       },
-      success: function (data) {
+      success: (data) => {
         if (data.success) {
           $("#reg-user")[0].reset();
           $("#reg-user").validate().resetForm();
@@ -206,6 +206,7 @@ $("#reg-user-btn").click((e) => {
           $("#reg-user").find(".error-msg").remove();
           $("#reg-user").find(".success-msg").remove();
           $("#reg-user-btn").innerHTML = "Register";
+          // alertify.success(data.message);
           window.location = "/login";
         } else {
           $("#reg-user-btn").innerHTML = "Register";
@@ -214,6 +215,7 @@ $("#reg-user-btn").click((e) => {
             <p>${data.message}</p>
           </div>`
           );
+          // alertify.error(data.message);
         }
       },
     });
@@ -256,8 +258,8 @@ $("#reg-provider-btn").click((e) => {
           $("#reg-provider-btn").innerHTML = "Register";
           $("#reg-provider").append(
             `<div class="error-msg">
-            <p>${data.message}</p>
-          </div>`
+              <p>${data.message}</p>
+            </div>`
           );
         }
       },
