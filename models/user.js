@@ -1,8 +1,6 @@
 const mongoose = require("mongoose");
 const { Schema } = require("mongoose");
 
-// mongoose.set("useFindAndModify", false);
-
 passportLocalMongoose = require("passport-local-mongoose");
 
 var userSchema = new Schema({

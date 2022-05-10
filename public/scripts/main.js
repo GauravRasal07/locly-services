@@ -2,6 +2,7 @@
 let providerId = null;
 let userId = null;
 
+
 function storeId(elem) {
   providerId = elem.dataset.pid;
   userId = elem.dataset.uid;
