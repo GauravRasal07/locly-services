@@ -9,7 +9,7 @@ var serviceSchema = new mongoose.Schema({
     required: [true, "Please enter area"],
   },
   basicCharges: {
-    type: [Number, "Basic Charges should be a number"],
+    type: Number,
     required: [true, "Please enter basic charges"],
   },
   description: {

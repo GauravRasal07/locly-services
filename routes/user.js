@@ -18,6 +18,7 @@ router.get("/register", (req, res) => {
 
 router.post("/register/consumer", (req, res) => {
   // let data = req.sanitize(req.body);
+  // return console.log(req.body);
   let data = req.body;
   if (data.password === data.confirm_pass) {
     let newUser = new User({
@@ -50,6 +51,7 @@ router.post("/register/consumer", (req, res) => {
 
 router.post("/register/provider", (req, res) => {
   let data = req.body;
+  // return console.log(req.body);
   if (data.password === data.confirm_pass) {
     let newUser = new User({
       username: data.username,

@@ -2,7 +2,6 @@
 let providerId = null;
 let userId = null;
 
-
 function storeId(elem) {
   providerId = elem.dataset.pid;
   userId = elem.dataset.uid;
@@ -238,6 +237,7 @@ $("#reg-provider-btn").click((e) => {
       basicCharges: $("#b_charges").val(),
       description: $("#desc").val(),
     };
+    console.log(data);
     $.ajax({
       url: "/register/provider",
       type: "POST",

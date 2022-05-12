@@ -4,7 +4,7 @@ const {Schema} = require("mongoose");
 
 var appointmentSchema = new Schema({
     name: {
-        type: [String, "Name can't contain numbers and special characters"],
+        type: String,
         required: [true, "Name is required"]
     },
     providerId: {
@@ -16,7 +16,7 @@ var appointmentSchema = new Schema({
         ref: "User"
     },
     mobile: {
-        type: [Number, "Contact Number should consist only Numbers"],
+        type: Number,
         required: [true, "Contact Number is required"]
     },
     address: {

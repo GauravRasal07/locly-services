@@ -11,15 +11,15 @@ var userSchema = new Schema({
   },
   // email: { type: String, unique: true, required: true },
   firstName: {
-    type: [String, "First name should be string"],
+    type: String,
     required: [true, "First name is required"],
   },
   lastName: {
-    type: [String, "Last name should be string"],
+    type: String,
     required: [true, "Last name is required"],
   },
   contactNumber: {
-    type: [Number, "Contact number should be number"],
+    type: Number,
     required: [true, "Contact number is required"],
   },
   isAdmin: {
